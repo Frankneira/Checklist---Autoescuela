@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Técnico – AutoEscuela MTC 2026</title>
+    <!-- FUENTES DEL MANUAL DE IDENTIDAD -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           MANUAL DE IDENTIDAD – AUTOESCUELA MTC 2026
+           Colores: Azul #0B4983 · Naranja #F5900C
+           Tipografías: Barlow Semi Condensed (títulos) / Plus Jakarta Sans (cuerpo)
+           ============================================================ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f0f4f9;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Arial, sans-serif;
+            padding: 16px;
+            color: #1a2634;
+        }
+        .app {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(11, 73, 131, 0.12);
+            padding: 24px 28px 32px;
+        }
+        /* HEADER */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #0B4983;
+            padding-bottom: 16px;
+            margin-bottom: 22px;
+        }
+        .header h1 {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #0B4983;
+            letter-spacing: -0.3px;
+        }
+        .header h1 span {
+            color: #F5900C;
+        }
+        .header .sub {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #4a5f78;
+            background: #e6edf5;
+            padding: 4px 16px;
+            border-radius: 30px;
+            border: 1px solid #d0dcec;
+        }
+        /* Identificación del vehículo */
+        .veh-id {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 28px;
+            background: #f4f8fd;
+            border-radius: 14px;
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            align-items: center;
+            border: 1px solid #d5e0ec;
+        }
+        .veh-id .field {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .veh-id .field label {
+            font-weight: 600;
+            color: #0B4983;
+            min-width: 70px;
+        }
+        .veh-id .field input,
+        .veh-id .field select {
+            padding: 5px 10px;
+            border: 1px solid #bacddb;
+            border-radius: 6px;
+            font-size: 13px;
+            background: #fff;
+            min-width: 120px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .veh-id .field input[type="text"] {
+            min-width: 100px;
+        }
+        .veh-id .plate-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .veh-id .plate-group input {
+            min-width: 80px;
+            width: 90px;
+        }
+        .veh-id .tipo-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-size: 13px;
+        }
+        .veh-id .tipo-group label {
+            font-weight: 400;
+            min-width: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .veh-id .tipo-group input[type="radio"] {
+            accent-color: #0B4983;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ===== BOTONES DE CATEGORÍA – MEJOR CONTRASTE ===== */
+        .cat-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #d5e0ec;
+            padding-bottom: 8px;
+        }
+        .cat-tabs button {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 30px 30px 0 0;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+            /* Inactivos: fondo azul claro, texto azul institucional */
+            background: #e6edf5;
+            color: #0B4983;
+            border-bottom: 3px solid transparent;
+        }
+        .cat-tabs button:hover {
+            background: #d0ddee;
+        }
+        .cat-tabs button.active {
+            /* Activo: fondo naranja, texto blanco, borde naranja */
+            background: #F5900C;
+            color: #ffffff;
+            border-bottom-color: #F5900C;
+        }
+        .cat-tabs .badge {
+            font-size: 11px;
+            background: rgba(255,255,255,0.3);
+            color: inherit;
+            border-radius: 30px;
+            padding: 0 10px;
+            margin-left: 4px;
+        }
+        .cat-tabs button.active .badge {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* ===== BOTONES LATERALES – MEJOR CONTRASTE ===== */
+        .side-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0 16px 0;
+        }
+        .side-tabs button {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 7px 18px;
+            border: 1px solid #d5e0ec;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+            /* Inactivos: fondo gris azulado claro, texto azul oscuro */
+            background: #f0f4fa;
+            color: #2c4058;
+        }
+        .side-tabs button:hover {
+            background: #d9e5f2;
+            border-color: #0B4983;
+        }
+        .side-tabs button.active {
+            /* Activo: fondo naranja, texto blanco, borde naranja */
+            background: #F5900C;
+            color: #ffffff;
+            border-color: #F5900C;
+        }
+
+        /* Checklist Table */
+        .checklist-wrap {
+            overflow-x: auto;
+            margin-top: 6px;
+            border-radius: 12px;
+            border: 1px solid #dde6f0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            min-width: 720px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        thead th {
+            background: #0B4983;
+            color: #ffffff;
+            padding: 10px 10px;
+            text-align: left;
+            font-weight: 700;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 4;
+        }
+        tbody td {
+            padding: 7px 10px;
+            border-bottom: 1px solid #e4ebf3;
+            vertical-align: middle;
+        }
+        tbody tr:hover {
+            background: #f5f9ff;
+        }
+        .col-num {
+            width: 44px;
+            text-align: center;
+            font-weight: 700;
+            color: #0B4983;
+            font-size: 12px;
+            background: #f0f6fd;
+        }
+        .col-desc {
+            min-width: 210px;
+            font-size: 13px;
+        }
+        .col-check {
+            width: 72px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .col-obs {
+            min-width: 130px;
+        }
+        .col-check input[type="radio"] {
+            accent-color: #F5900C;
+            width: 16px;
+            height: 16px;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+        .col-check .label-inline {
+            font-size: 11px;
+            color: #4a5f78;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        .col-obs input[type="text"] {
+            width: 100%;
+            border: 1px solid #cbdae7;
+            border-radius: 4px;
+            padding: 4px 6px;
+            font-size: 12px;
+            background: #fbfdff;
+            min-width: 80px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .col-obs input[type="text"]:focus {
+            border-color: #0B4983;
+            outline: none;
+            background: #fff;
+        }
+
+        /* Safety Equipment */
+        .seguridad {
+            margin-top: 28px;
+            border-top: 3px solid #0B4983;
+            padding-top: 20px;
+        }
+        .seguridad h2 {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 22px;
+            color: #0B4983;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .seguridad h2 span {
+            color: #F5900C;
+        }
+        .seguridad .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 780px) {
+            .seguridad .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .seg-card {
+            background: #f6faff;
+            border: 1px solid #d5e0ec;
+            border-radius: 14px;
+            padding: 16px 20px;
+        }
+        .seg-card h3 {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 17px;
+            color: #0B4983;
+            border-bottom: 2px solid #d5e0ec;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .seg-card .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 0;
+            font-size: 13.5px;
+            border-bottom: 1px solid #edf2f8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .seg-card .item:last-child {
+            border-bottom: none;
+        }
+        .seg-card .item .chk {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-left: auto;
+        }
+        .seg-card .item .chk label {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+        }
+        .seg-card .item .chk input[type="radio"] {
+            accent-color: #F5900C;
+            width: 15px;
+            height: 15px;
+        }
+        .seg-card .item .chk input[type="text"] {
+            border: 1px solid #cbdae7;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 12px;
+            width: 70px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .seg-card .botiquin-tabla {
+            margin-top: 8px;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .seg-card .botiquin-tabla th {
+            background: #d9e4f0;
+            color: #0B4983;
+            padding: 4px 8px;
+            text-align: left;
+            font-weight: 700;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+        }
+        .seg-card .botiquin-tabla td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #e4ebf3;
+        }
+        .seg-card .botiquin-tabla .qty {
+            text-align: center;
+            width: 50px;
+        }
+        .seg-card .botiquin-tabla .chk-bot {
+            text-align: center;
+            width: 100px;
+        }
+        .seg-card .botiquin-tabla .chk-bot input[type="radio"] {
+            accent-color: #F5900C;
+            width: 14px;
+            height: 14px;
+            margin: 0 3px;
+        }
+        .seg-card .botiquin-tabla .chk-bot .label-inline {
+            font-size: 11px;
+            color: #4a5f78;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 22px;
+            justify-content: flex-end;
+            border-top: 1px solid #d5e0ec;
+            padding-top: 18px;
+        }
+        .actions button {
+            padding: 10px 28px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+        }
+        .btn-primary {
+            background: #F5900C;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background: #d97a0a;
+        }
+        .btn-secondary {
+            background: #e6edf5;
+            color: #0B4983;
+        }
+        .btn-secondary:hover {
+            background: #d0ddee;
+        }
+        .btn-success {
+            background: #0B4983;
+            color: #ffffff;
+        }
+        .btn-success:hover {
+            background: #093a69;
+        }
+
+        /* Footer */
+        .footer-info {
+            margin-top: 18px;
+            font-size: 12.5px;
+            color: #5a6f88;
+            text-align: center;
+            border-top: 1px solid #dde6f0;
+            padding-top: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .footer-info strong {
+            color: #0B4983;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .app {
+                padding: 14px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+            .veh-id .field {
+                flex-wrap: wrap;
+            }
+            .veh-id .field label {
+                min-width: 60px;
+            }
+            .cat-tabs button {
+                font-size: 13px;
+                padding: 6px 14px;
+            }
+            .side-tabs button {
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+            .col-desc {
+                min-width: 150px;
+            }
+            .col-check {
+                width: 60px;
+            }
+            .col-obs {
+                min-width: 90px;
+            }
+            .seg-card .item {
+                flex-wrap: wrap;
+            }
+            .seg-card .item .chk {
+                margin-left: 0;
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .app {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 16px;
+            }
+            .actions {
+                display: none;
+            }
+            .cat-tabs button,
+            .side-tabs button {
+                background: #eef2f7;
+                border: 1px solid #aaa;
+            }
+            .cat-tabs button.active,
+            .side-tabs button.active {
+                background: #F5900C;
+                color: #fff;
+                border-color: #F5900C;
+            }
+            .veh-id .field input,
+            .veh-id .field select {
+                border: 1px solid #888;
+            }
+            .seg-card {
+                break-inside: avoid;
+            }
+            .checklist-wrap {
+                border: 1px solid #aaa;
+            }
+            thead th {
+                background: #0B4983 !important;
+                color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .col-num {
+                background: #f0f6fd !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app" id="app">
+
+        <!-- HEADER con identidad -->
+        <div class="header">
+            <div>
+                <h1>🚗 <span>AutoEscuela</span> MTC 2026</h1>
+                <div style="font-size:14px;color:#4a5f78;margin-top:2px;font-family:'Plus Jakarta Sans',sans-serif;">
+                    Checklist de Inspección Técnica – DS 058-2003-MTC
+                </div>
+            </div>
+            <div class="sub">Simulador Oficial de Licencias</div>
+        </div>
+
+        <!-- IDENTIFICACIÓN DEL VEHÍCULO -->
+        <div class="veh-id">
+            <div class="field">
+                <label>Unidad:</label>
+                <div class="tipo-group">
+                    <label><input type="radio" name="tipoUnidad" value="unitario" checked> Unitario</label>
+                    <label><input type="radio" name="tipoUnidad" value="combinado"> Combinado</label>
+                </div>
+            </div>
+            <div class="field plate-group">
+                <label>Placa(s):</label>
+                <input type="text" placeholder="Placa 1" id="placa1" style="width:90px;">
+                <input type="text" placeholder="Placa 2" id="placa2" style="width:90px;">
+                <input type="text" placeholder="Placa 3" id="placa3" style="width:90px;">
+            </div>
+            <div class="field">
+                <label>Inspector:</label>
+                <input type="text" placeholder="Nombres y apellidos" id="inspector" style="min-width:140px;">
+            </div>
+            <div class="field">
+                <label>Fecha:</label>
+                <input type="date" id="fechaInspeccion" style="min-width:130px;">
+            </div>
+        </div>
+
+        <!-- CATEGORY TABS -->
+        <div class="cat-tabs" id="catTabs">
+            <button class="active" data-cat="L">Categoría L <span class="badge">menores</span></button>
+            <button data-cat="M">Categoría M <span class="badge">pasajeros</span></button>
+            <button data-cat="N">Categoría N <span class="badge">carga</span></button>
+            <button data-cat="O">Categoría O <span class="badge">remolques</span></button>
+            <button data-cat="S">Categoría S <span class="badge">especiales</span></button>
+        </div>
+
+        <!-- SIDE TABS -->
+        <div class="side-tabs" id="sideTabs">
+            <button class="active" data-side="front">🔵 Frontal</button>
+            <button data-side="left">⬅️ Lateral Izq.</button>
+            <button data-side="right">➡️ Lateral Der.</button>
+            <button data-side="rear">🔴 Posterior</button>
+            <button data-side="interior">🪟 Interior / Cabina</button>
+            <button data-side="chasis">🔧 Chasis / Bajos</button>
+        </div>
+
+        <!-- CHECKLIST TABLE -->
+        <div class="checklist-wrap">
+            <table id="checklistTable">
+                <thead>
+                    <tr>
+                        <th style="width:44px;">#</th>
+                        <th style="min-width:220px;">Descripción (basado en Anexo III y Título III)</th>
+                        <th style="width:72px;">Cumple</th>
+                        <th style="width:72px;">No Cumple</th>
+                        <th style="width:72px;">N/A</th>
+                        <th style="min-width:130px;">Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody id="checklistBody">
+                    <!-- Generado por JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- EQUIPAMIENTO DE SEGURIDAD -->
+        <div class="seguridad">
+            <h2>🛡️ <span>Equipamiento</span> de Seguridad</h2>
+            <div class="grid">
+
+                <!-- EXTINTOR -->
+                <div class="seg-card">
+                    <h3>🧯 Extintor (PQS) – NTP 833.032</h3>
+                    <div class="item"><span>🔹 Extintor PQS tipo ABC</span><span class="chk"><label><input type="radio" name="ext1" value="C"> C</label><label><input type="radio" name="ext1" value="NC"> NC</label><label><input type="radio" name="ext1" value="NA" checked> N/A</label></span></div>
+                    <div class="item"><span>🔹 Número de extintores (1 o 2)</span><span class="chk"><label><input type="radio" name="ext2" value="C"> C</label><label><input type="radio" name="ext2" value="NC"> NC</label><label><input type="radio" name="ext2" value="NA" checked> N/A</label><input type="text" placeholder="Cant." style="width:50px;"></span></div>
+                    <div class="item"><span>🔹 Capacidad del extintor (kg)</span><span class="chk"><label><input type="radio" name="ext3" value="C"> C</label><label><input type="radio" name="ext3" value="NC"> NC</label><label><input type="radio" name="ext3" value="NA" checked> N/A</label><input type="text" placeholder="kg" style="width:45px;"></span></div>
+                    <div class="item"><span>🔹 Rotulado (fecha vencimiento)</span><span class="chk"><label><input type="radio" name="ext4" value="C"> C</label><label><input type="radio" name="ext4" value="NC"> NC</label><label><input type="radio" name="ext4" value="NA" checked> N/A</label></span></div>
+                    <div class="item"><span>🔹 Instrucciones de uso visibles</span><span class="chk"><label><input type="radio" name="ext5" value="C"> C</label><label><input type="radio" name="ext5" value="NC"> NC</label><label><input type="radio" name="ext5" value="NA" checked> N/A</label></span></div>
+                    <div class="item"><span>🔹 Manguera de descarga</span><span class="chk"><label><input type="radio" name="ext6" value="C"> C</label><label><input type="radio" name="ext6" value="NC"> NC</label><label><input type="radio" name="ext6" value="NA" checked> N/A</label></span></div>
+                    <div class="item"><span>🔹 Manómetro de presión (verde)</span><span class="chk"><label><input type="radio" name="ext7" value="C"> C</label><label><input type="radio" name="ext7" value="NC"> NC</label><label><input type="radio" name="ext7" value="NA" checked> N/A</label></span></div>
+                    <div class="item"><span>🔹 Etiqueta de prueba hidrostática</span><span class="chk"><label><input type="radio" name="ext8" value="C"> C</label><label><input type="radio" name="ext8" value="NC"> NC</label><label><input type="radio" name="ext8" value="NA" checked> N/A</label></span></div>
+                    <div class="item"><span>🔹 Precinto y/o sellos de seguridad</span><span class="chk"><label><input type="radio" name="ext9" value="C"> C</label><label><input type="radio" name="ext9" value="NC"> NC</label><label><input type="radio" name="ext9" value="NA" checked> N/A</label></span></div>
+                    <div class="item" style="margin-top:6px;border-top:2px solid #d5e0ec;padding-top:8px;"><span>🔹 Ubicación accesible y visible</span><span class="chk"><label><input type="radio" name="ext10" value="C"> C</label><label><input type="radio" name="ext10" value="NC"> NC</label><label><input type="radio" name="ext10" value="NA" checked> N/A</label></span></div>
+                </div>
+
+                <!-- BOTIQUÍN -->
+                <div class="seg-card">
+                    <h3>🩹 Botiquín – R.D. Nº 1011-2010-MTC/15</h3>
+                    <div style="font-size:12.5px;color:#4a5f78;margin-bottom:6px;">Vehículos destinados a servicios de transporte</div>
+                    <table class="botiquin-tabla">
+                        <thead>
+                            <tr><th>Nº</th><th>Descripción</th><th class="qty">Cant.</th><th class="chk-bot">Cumple</th><th class="chk-bot">No Cumple</th><th class="chk-bot">N/A</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Apósito esterilizado 10x10 cm</td><td class="qty">5</td><td class="chk-bot"><input type="radio" name="bot1" value="C"></td><td class="chk-bot"><input type="radio" name="bot1" value="NC"></td><td class="chk-bot"><input type="radio" name="bot1" value="NA" checked></td></tr>
+                            <tr><td>2</td><td>Jabón antiséptico</td><td class="qty">1</td><td class="chk-bot"><input type="radio" name="bot2" value="C"></td><td class="chk-bot"><input type="radio" name="bot2" value="NC"></td><td class="chk-bot"><input type="radio" name="bot2" value="NA" checked></td></tr>
+                            <tr><td>3</td><td>Esparadrapo 2.5 cm x 5 m</td><td class="qty">2</td><td class="chk-bot"><input type="radio" name="bot3" value="C"></td><td class="chk-bot"><input type="radio" name="bot3" value="NC"></td><td class="chk-bot"><input type="radio" name="bot3" value="NA" checked></td></tr>
+                            <tr><td>4</td><td>Venda elástica 4 x 5 yardas</td><td class="qty">2</td><td class="chk-bot"><input type="radio" name="bot4" value="C"></td><td class="chk-bot"><input type="radio" name="bot4" value="NC"></td><td class="chk-bot"><input type="radio" name="bot4" value="NA" checked></td></tr>
+                            <tr><td>5</td><td>Tijera punta roma 3"</td><td class="qty">1</td><td class="chk-bot"><input type="radio" name="bot5" value="C"></td><td class="chk-bot"><input type="radio" name="bot5" value="NC"></td><td class="chk-bot"><input type="radio" name="bot5" value="NA" checked></td></tr>
+                            <tr><td>6</td><td>Guantes quirúrgicos est. (par)</td><td class="qty">1</td><td class="chk-bot"><input type="radio" name="bot6" value="C"></td><td class="chk-bot"><input type="radio" name="bot6" value="NC"></td><td class="chk-bot"><input type="radio" name="bot6" value="NA" checked></td></tr>
+                            <tr><td>7</td><td>Algodón 50 g</td><td class="qty">1</td><td class="chk-bot"><input type="radio" name="bot7" value="C"></td><td class="chk-bot"><input type="radio" name="bot7" value="NC"></td><td class="chk-bot"><input type="radio" name="bot7" value="NA" checked></td></tr>
+                            <tr><td>8</td><td>Alcohol de 70° 500 ml / 120 ml</td><td class="qty">1</td><td class="chk-bot"><input type="radio" name="bot8" value="C"></td><td class="chk-bot"><input type="radio" name="bot8" value="NC"></td><td class="chk-bot"><input type="radio" name="bot8" value="NA" checked></td></tr>
+                            <tr><td>9</td><td>Banda adhesivas (curitas)</td><td class="qty">20</td><td class="chk-bot"><input type="radio" name="bot9" value="C"></td><td class="chk-bot"><input type="radio" name="bot9" value="NC"></td><td class="chk-bot"><input type="radio" name="bot9" value="NA" checked></td></tr>
+                            <tr><td>10</td><td>Gasas esterilizadas 10x10 cm</td><td class="qty">20</td><td class="chk-bot"><input type="radio" name="bot10" value="C"></td><td class="chk-bot"><input type="radio" name="bot10" value="NC"></td><td class="chk-bot"><input type="radio" name="bot10" value="NA" checked></td></tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top:8px;font-size:12px;color:#4a5f78;">✔️ Verificar integridad del botiquín y fecha de caducidad de insumos</div>
+                </div>
+
+                <!-- OTROS ELEMENTOS DE SEGURIDAD -->
+                <div class="seg-card" style="grid-column: 1 / -1;">
+                    <h3>⚠️ Otros elementos de seguridad</h3>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 20px;">
+                        <div class="item"><span>🔸 Conos de seguridad (2)</span><span class="chk"><label><input type="radio" name="seg1" value="C"> C</label><label><input type="radio" name="seg1" value="NC"> NC</label><label><input type="radio" name="seg1" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Triángulos de seguridad (2)</span><span class="chk"><label><input type="radio" name="seg2" value="C"> C</label><label><input type="radio" name="seg2" value="NC"> NC</label><label><input type="radio" name="seg2" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Chaleco reflectivo (conductor)</span><span class="chk"><label><input type="radio" name="seg3" value="C"> C</label><label><input type="radio" name="seg3" value="NC"> NC</label><label><input type="radio" name="seg3" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Gata / gato hidráulico</span><span class="chk"><label><input type="radio" name="seg4" value="C"> C</label><label><input type="radio" name="seg4" value="NC"> NC</label><label><input type="radio" name="seg4" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Llave de ruedas / cruceta</span><span class="chk"><label><input type="radio" name="seg5" value="C"> C</label><label><input type="radio" name="seg5" value="NC"> NC</label><label><input type="radio" name="seg5" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Rueda de repuesto (estado y fijación)</span><span class="chk"><label><input type="radio" name="seg6" value="C"> C</label><label><input type="radio" name="seg6" value="NC"> NC</label><label><input type="radio" name="seg6" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Caja de herramientas (opcional)</span><span class="chk"><label><input type="radio" name="seg7" value="C"> C</label><label><input type="radio" name="seg7" value="NC"> NC</label><label><input type="radio" name="seg7" value="NA" checked> N/A</label></span></div>
+                        <div class="item"><span>🔸 Extintor adicional (si aplica)</span><span class="chk"><label><input type="radio" name="seg8" value="C"> C</label><label><input type="radio" name="seg8" value="NC"> NC</label><label><input type="radio" name="seg8" value="NA" checked> N/A</label></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+            <button class="btn-secondary" onclick="resetChecklist()">🔄 Reiniciar checklist</button>
+            <button class="btn-primary" onclick="generarReporte()">📄 Generar reporte</button>
+            <button class="btn-success" onclick="window.print()">🖨️ Imprimir / PDF</button>
+        </div>
+
+        <div class="footer-info">
+            <strong>AutoEscuela MTC 2026</strong> – Simulador Oficial de Licencias de Conducir · Documento de inspección basado en DS 058-2003-MTC
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // DATA: items por categoría y lado (basado en Anexo III y Título III)
+        // ============================================================
+        const ITEMS_DATA = {
+            // -------------------- CATEGORÍA L (menores) --------------------
+            L: {
+                front: [
+                    { id: 'L01', desc: 'Luces bajas (1 o 2) – funcionamiento, color blanco/amarillo' },
+                    { id: 'L02', desc: 'Luces altas (1 o 2) – funcionamiento, color blanco/amarillo' },
+                    { id: 'L03', desc: 'Luces direccionales delanteras (2) – funcionamiento, color amarillo/naranja' },
+                    { id: 'L04', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja' },
+                    { id: 'L05', desc: 'Luz de freno (1 o 2) – funcionamiento, color rojo' },
+                    { id: 'L06', desc: 'Reflectores posteriores (1 o 2) – estado, color rojo' },
+                    { id: 'L07', desc: 'Parabrisas (si tiene) – vidrio de seguridad, sin grietas' },
+                    { id: 'L08', desc: 'Espejo retrovisor izquierdo – estado, fijación, visibilidad' },
+                    { id: 'L09', desc: 'Espejo retrovisor derecho (obligatorio en L2,L4,L5) – estado' },
+                    { id: 'L10', desc: 'Bocina – sonido uniforme, audible a 50 m' },
+                    { id: 'L11', desc: 'Placa de rodaje – legible, fijada correctamente' },
+                    { id: 'L12', desc: 'Guardabarros – evitan salpicaduras, sin aristas peligrosas' },
+                ],
+                left: [
+                    { id: 'L13', desc: 'Neumáticos – profundidad mínima 0,8 mm, sin cortes ni deformaciones' },
+                    { id: 'L14', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'L15', desc: 'Suspensión – estado general, sin fugas' },
+                    { id: 'L16', desc: 'Escape – ubicación, descarga hacia atrás' },
+                    { id: 'L17', desc: 'Depósito de combustible – sin fugas, tapa específica' },
+                    { id: 'L18', desc: 'Sistema de frenos – estado de cables, fundas, pastillas' },
+                ],
+                right: [
+                    { id: 'L19', desc: 'Neumáticos – profundidad mínima 0,8 mm, sin cortes' },
+                    { id: 'L20', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'L21', desc: 'Suspensión – estado general, sin fugas' },
+                    { id: 'L22', desc: 'Escape – ubicación, descarga hacia atrás' },
+                    { id: 'L23', desc: 'Depósito de combustible – sin fugas, tapa específica' },
+                    { id: 'L24', desc: 'Sistema de frenos – estado de cables, fundas, pastillas' },
+                ],
+                rear: [
+                    { id: 'L25', desc: 'Luz de freno (1 o 2) – funcionamiento, color rojo' },
+                    { id: 'L26', desc: 'Luces direccionales posteriores (2) – funcionamiento' },
+                    { id: 'L27', desc: 'Luces de posición posterior (1 o 2) – color rojo' },
+                    { id: 'L28', desc: 'Luz de placa posterior (1) – ilumina la placa' },
+                    { id: 'L29', desc: 'Reflectores posteriores (1 o 2) – estado, color rojo' },
+                    { id: 'L30', desc: 'Placa de rodaje posterior – legible, fijada' },
+                    { id: 'L31', desc: 'Parachoques posterior – sin filos cortantes' },
+                ],
+                interior: [
+                    { id: 'L32', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                    { id: 'L33', desc: 'Odómetro – funcionamiento, registro en km' },
+                    { id: 'L34', desc: 'Indicador de nivel de combustible – funcionamiento' },
+                    { id: 'L35', desc: 'Luz testigo de direccionales – funcionamiento' },
+                    { id: 'L36', desc: 'Luz testigo de luz alta – funcionamiento' },
+                    { id: 'L37', desc: 'Asiento del conductor – estado, fijación' },
+                    { id: 'L38', desc: 'Dispositivos para descansar pies – presentes' },
+                    { id: 'L39', desc: 'Cinturón de seguridad (si tiene) – estado, hebilla' },
+                ],
+                chasis: [
+                    { id: 'L40', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas' },
+                    { id: 'L41', desc: 'Ejes – sin juego excesivo, fijación correcta' },
+                    { id: 'L42', desc: 'Suspensión – estado de resortes, amortiguadores' },
+                    { id: 'L43', desc: 'Sistema de escape – sin fugas, fijación' },
+                ]
+            },
+
+            // -------------------- CATEGORÍA M (pasajeros) --------------------
+            M: {
+                front: [
+                    { id: 'M01', desc: 'Luces bajas (2 o 4) – funcionamiento, color blanco/amarillo, 40W min' },
+                    { id: 'M02', desc: 'Luces altas (2 o 4) – funcionamiento, color blanco/amarillo, 45W min' },
+                    { id: 'M03', desc: 'Luces direccionales delanteras (2) – funcionamiento, color amarillo/naranja' },
+                    { id: 'M04', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja' },
+                    { id: 'M05', desc: 'Luces perimétricas (si ancho >2,10m o alto >3m) – 2, blanco/amarillo' },
+                    { id: 'M06', desc: 'Luces neblineras delanteras (opcional) – funcionamiento' },
+                    { id: 'M07', desc: 'Parabrisas – vidrio laminado, transparencia ≥70%, campo de visión claro' },
+                    { id: 'M08', desc: 'Limpiaparabrisas y lavaparabrisas – funcionamiento, plumillas en buen estado' },
+                    { id: 'M09', desc: 'Parachoques delantero – sin filos cortantes, fijación firme' },
+                    { id: 'M10', desc: 'Placa de rodaje delantera – legible, fijada correctamente' },
+                    { id: 'M11', desc: 'Espejo retrovisor izquierdo – estado, fijación, visibilidad clara' },
+                    { id: 'M12', desc: 'Espejo retrovisor derecho – estado, fijación, visibilidad clara' },
+                    { id: 'M13', desc: 'Visor de punto ciego (M2 >15 pasajeros) – estado y fijación' },
+                    { id: 'M14', desc: 'Bocina – sonido uniforme, audible a 100 m' },
+                    { id: 'M15', desc: 'Láminas retroreflectivas delanteras (servicio de taxi) – según Anexo III' },
+                    { id: 'M16', desc: 'Cabezales de seguridad en asientos delanteros – existencia y estado' },
+                ],
+                left: [
+                    { id: 'M17', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo, rojo/blanco alternados' },
+                    { id: 'M18', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado, amarillo/naranja' },
+                    { id: 'M19', desc: 'Luces perimétricas laterales (si ancho >2,10m o alto >3m) – una cada 3m' },
+                    { id: 'M20', desc: 'Neumáticos – profundidad mínima 1,6 mm (M1,M2) / 2,0 mm (M3), sin cortes' },
+                    { id: 'M21', desc: 'Aros – sin deformaciones, tuercas completas y ajustadas' },
+                    { id: 'M22', desc: 'Guardafangos – evitan salpicaduras, sin aristas peligrosas' },
+                    { id: 'M23', desc: 'Accesorios laterales – bordes redondeados, no sobresalen >50 mm del ancho' },
+                    { id: 'M24', desc: 'Rótulos de peso y dimensiones (M3) – legibles, altura ≥100 mm' },
+                    { id: 'M25', desc: 'Puertas de servicio (M2,M3) – funcionamiento, asideros' },
+                    { id: 'M26', desc: 'Salidas de emergencia (M2,M3) – señalizadas, funcionamiento' },
+                    { id: 'M27', desc: 'Rueda de repuesto – estado, fijación, presión adecuada' },
+                    { id: 'M28', desc: 'Herramientas (gata, llave) – presentes y en condiciones de uso' },
+                ],
+                right: [
+                    { id: 'M29', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo' },
+                    { id: 'M30', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado' },
+                    { id: 'M31', desc: 'Luces perimétricas laterales (si aplica) – una cada 3m' },
+                    { id: 'M32', desc: 'Neumáticos – profundidad mínima 1,6 mm (M1,M2) / 2,0 mm (M3)' },
+                    { id: 'M33', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'M34', desc: 'Guardafangos – evitan salpicaduras' },
+                    { id: 'M35', desc: 'Accesorios laterales – bordes redondeados, sin aristas' },
+                    { id: 'M36', desc: 'Rótulos de peso y dimensiones (M3) – legibles' },
+                    { id: 'M37', desc: 'Puertas de servicio (M2,M3) – funcionamiento, asideros' },
+                    { id: 'M38', desc: 'Salidas de emergencia (M2,M3) – señalizadas' },
+                    { id: 'M39', desc: 'Rueda de repuesto – estado, fijación' },
+                    { id: 'M40', desc: 'Herramientas – presentes y operativas' },
+                ],
+                rear: [
+                    { id: 'M41', desc: 'Luces de freno (2) – funcionamiento, color rojo, activación al presionar pedal' },
+                    { id: 'M42', desc: 'Luces direccionales posteriores (2) – funcionamiento, color amarillo/naranja/rojo' },
+                    { id: 'M43', desc: 'Luces de posición posterior (2) – funcionamiento, color rojo' },
+                    { id: 'M44', desc: 'Luces de retroceso (1 o 2) – funcionamiento, color blanco' },
+                    { id: 'M45', desc: 'Luces de placa posterior (1 o 2) – iluminan la placa' },
+                    { id: 'M46', desc: 'Reflectores posteriores (2) – estado, color rojo' },
+                    { id: 'M47', desc: 'Luces perimétricas posteriores (si aplica) – 2, color rojo' },
+                    { id: 'M48', desc: 'Luz neblinera posterior (opcional) – funcionamiento, color rojo' },
+                    { id: 'M49', desc: 'Dispositivo antiempotramiento (M3) – presente, altura ≤550 mm' },
+                    { id: 'M50', desc: 'Láminas retroreflectivas posteriores – cubren el ancho del vehículo' },
+                    { id: 'M51', desc: 'Placa de rodaje posterior – legible, fijada correctamente' },
+                    { id: 'M52', desc: 'Parachoques posterior – sin filos cortantes, fijación' },
+                    { id: 'M53', desc: 'Rótulos de servicio (escolar, turístico, etc.) – visibles, legibles' },
+                ],
+                interior: [
+                    { id: 'M54', desc: 'Cinturones de seguridad (piloto y copiloto) – 3 puntos, estado, hebillas' },
+                    { id: 'M55', desc: 'Cinturones de seguridad posteriores (M1) – 2 puntos mínimo' },
+                    { id: 'M56', desc: 'Cabezales de seguridad (asientos delanteros) – existencia y estado' },
+                    { id: 'M57', desc: 'Cabezales de seguridad (segunda fila, M1 desde 2005) – 2 mínimo' },
+                    { id: 'M58', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                    { id: 'M59', desc: 'Odómetro – funcionamiento, registro en km' },
+                    { id: 'M60', desc: 'Tacógrafo (M3) – funcionamiento, precintos, calibración' },
+                    { id: 'M61', desc: 'Indicador de nivel de combustible – funcionamiento' },
+                    { id: 'M62', desc: 'Indicador de presión de aire (sistemas neumáticos) – funcionamiento' },
+                    { id: 'M63', desc: 'Sistema de frenos – pedal firme, luces testigo, sin fugas' },
+                    { id: 'M64', desc: 'Depósito de combustible – fijación, sin fugas, tapa específica' },
+                    { id: 'M65', desc: 'Sistema de escape – sin fugas, fijación, descarga hacia atrás o lateral izquierda' },
+                    { id: 'M66', desc: 'Asiento del conductor – regulación de distancia al timón' },
+                    { id: 'M67', desc: 'Desempañador (vehículos desde 2004) – funcionamiento' },
+                    { id: 'M68', desc: 'Alarma sonora de retroceso (M2,M3) – funcionamiento' },
+                    { id: 'M69', desc: 'Extintor (M2,M3) – presente, carga vigente, fijación accesible' },
+                    { id: 'M70', desc: 'Triángulos de seguridad (2) – presentes y en buen estado' },
+                    { id: 'M71', desc: 'Luces interiores – funcionamiento, color blanco' },
+                    { id: 'M72', desc: 'Agarraderas y pasamanos (M2,M3) – estado, fijación' },
+                    { id: 'M73', desc: 'Piso (M2,M3) – antideslizante, sin rajaduras' },
+                    { id: 'M74', desc: 'Ventilación (M2,M3) – funcionamiento' },
+                    { id: 'M75', desc: 'Rueda de repuesto – estado, fijación' },
+                    { id: 'M76', desc: 'Herramientas (gata, llave) – presentes y operativas' },
+                ],
+                chasis: [
+                    { id: 'M77', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas, perforaciones indebidas' },
+                    { id: 'M78', desc: 'Suspensión – estado general, sin fugas de aire/líquido, fijaciones' },
+                    { id: 'M79', desc: 'Ejes – sin juego excesivo, fijación correcta, sin deformaciones' },
+                    { id: 'M80', desc: 'Circuitos de freno (tuberías, mangueras) – sin fugas, sin deterioro' },
+                    { id: 'M81', desc: 'Sistema de combustible – sin fugas, estado general' },
+                    { id: 'M82', desc: 'Transmisión / juntas cardánicas – estado, fijación, sin juego excesivo' },
+                    { id: 'M83', desc: 'Sistema de escape – sin fugas, fijación, protección térmica (M2,M3)' },
+                    { id: 'M84', desc: 'Anclajes de carrocería al chasis – estado, fijación' },
+                ]
+            },
+
+            // -------------------- CATEGORÍA N (carga) --------------------
+            N: {
+                front: [
+                    { id: 'N01', desc: 'Luces bajas (2 o 4) – funcionamiento, color blanco/amarillo, 40W min' },
+                    { id: 'N02', desc: 'Luces altas (2 o 4) – funcionamiento, color blanco/amarillo, 45W min' },
+                    { id: 'N03', desc: 'Luces direccionales delanteras (2) – funcionamiento, color amarillo/naranja' },
+                    { id: 'N04', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja' },
+                    { id: 'N05', desc: 'Luces perimétricas (si ancho >2,10m o alto >3m) – 2, blanco/amarillo' },
+                    { id: 'N06', desc: 'Luces neblineras delanteras (opcional) – funcionamiento' },
+                    { id: 'N07', desc: 'Parabrisas – vidrio laminado, transparencia ≥70%, campo de visión claro' },
+                    { id: 'N08', desc: 'Limpiaparabrisas y lavaparabrisas – funcionamiento, plumillas en buen estado' },
+                    { id: 'N09', desc: 'Parachoques delantero – sin filos cortantes, fijación firme' },
+                    { id: 'N10', desc: 'Placa de rodaje delantera – legible, fijada correctamente' },
+                    { id: 'N11', desc: 'Espejo retrovisor izquierdo – estado, fijación, visibilidad clara' },
+                    { id: 'N12', desc: 'Espejo retrovisor derecho – estado, fijación, visibilidad clara' },
+                    { id: 'N13', desc: 'Visor de punto ciego (N2,N3) – estado y fijación' },
+                    { id: 'N14', desc: 'Bocina – sonido uniforme, audible a 100 m' },
+                    { id: 'N15', desc: 'Rótulos de peligro (mercancías peligrosas) – visibles, legibles' },
+                    { id: 'N16', desc: 'Cabezales de seguridad en asientos delanteros – existencia y estado' },
+                ],
+                left: [
+                    { id: 'N17', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo, rojo/blanco alternados' },
+                    { id: 'N18', desc: 'Defensas laterales (N2,N3) – estado, fijación, dimensiones según Anexo III' },
+                    { id: 'N19', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado, amarillo/naranja' },
+                    { id: 'N20', desc: 'Luces perimétricas laterales (si ancho >2,10m o alto >3m) – una cada 3m' },
+                    { id: 'N21', desc: 'Neumáticos – profundidad mínima 1,6 mm (N1,N2) / 2,0 mm (N3), sin cortes' },
+                    { id: 'N22', desc: 'Aros – sin deformaciones, tuercas completas y ajustadas' },
+                    { id: 'N23', desc: 'Guardafangos – evitan salpicaduras, sin aristas peligrosas' },
+                    { id: 'N24', desc: 'Accesorios laterales – bordes redondeados, no sobresalen >50 mm del ancho' },
+                    { id: 'N25', desc: 'Rótulos de peso y dimensiones (N2,N3) – legibles, altura ≥100 mm' },
+                    { id: 'N26', desc: 'Dispositivos de sujeción (transporte de contenedores) – cantidad y estado' },
+                    { id: 'N27', desc: 'Conexiones eléctricas y neumáticas (para remolques) – estado, compatibilidad' },
+                    { id: 'N28', desc: 'Rueda de repuesto – estado, fijación, presión adecuada' },
+                    { id: 'N29', desc: 'Herramientas (gata, llave) – presentes y en condiciones de uso' },
+                    { id: 'N30', desc: 'Circulina amarilla (recolección de residuos) – funcionamiento' },
+                ],
+                right: [
+                    { id: 'N31', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo' },
+                    { id: 'N32', desc: 'Defensas laterales (N2,N3) – estado, fijación, dimensiones' },
+                    { id: 'N33', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado' },
+                    { id: 'N34', desc: 'Luces perimétricas laterales (si aplica) – una cada 3m' },
+                    { id: 'N35', desc: 'Neumáticos – profundidad mínima 1,6 mm (N1,N2) / 2,0 mm (N3)' },
+                    { id: 'N36', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'N37', desc: 'Guardafangos – evitan salpicaduras' },
+                    { id: 'N38', desc: 'Accesorios laterales – bordes redondeados' },
+                    { id: 'N39', desc: 'Rótulos de peso y dimensiones (N2,N3) – legibles' },
+                    { id: 'N40', desc: 'Dispositivos de sujeción (transporte de contenedores) – estado' },
+                    { id: 'N41', desc: 'Conexiones eléctricas y neumáticas – estado, compatibilidad' },
+                    { id: 'N42', desc: 'Rueda de repuesto – estado, fijación' },
+                    { id: 'N43', desc: 'Herramientas – presentes y operativas' },
+                ],
+                rear: [
+                    { id: 'N44', desc: 'Luces de freno (2) – funcionamiento, color rojo, activación al presionar pedal' },
+                    { id: 'N45', desc: 'Luces direccionales posteriores (2) – funcionamiento, color amarillo/naranja/rojo' },
+                    { id: 'N46', desc: 'Luces de posición posterior (2) – funcionamiento, color rojo' },
+                    { id: 'N47', desc: 'Luces de retroceso (1 o 2) – funcionamiento, color blanco' },
+                    { id: 'N48', desc: 'Luces de placa posterior (1 o 2) – iluminan la placa' },
+                    { id: 'N49', desc: 'Reflectores posteriores (2) – estado, color rojo' },
+                    { id: 'N50', desc: 'Luces perimétricas posteriores (si aplica) – 2, color rojo' },
+                    { id: 'N51', desc: 'Luz neblinera posterior (opcional) – funcionamiento, color rojo' },
+                    { id: 'N52', desc: 'Dispositivo antiempotramiento – presente, altura ≤550 mm, dimensiones' },
+                    { id: 'N53', desc: 'Láminas retroreflectivas posteriores – cubren el ancho del vehículo' },
+                    { id: 'N54', desc: 'Placa de rodaje posterior – legible, fijada correctamente' },
+                    { id: 'N55', desc: 'Rótulos de peligro (mercancías peligrosas) – visibles, legibles' },
+                    { id: 'N56', desc: 'Dispositivo de enganche / quinta rueda – estado, fijación, seguridad' },
+                    { id: 'N57', desc: 'Parachoques posterior – sin filos cortantes, fijación' },
+                    { id: 'N58', desc: 'Longitud total (si >18m) – rótulo posterior legible' },
+                ],
+                interior: [
+                    { id: 'N59', desc: 'Cinturones de seguridad (piloto y copiloto) – 3 puntos, estado, hebillas' },
+                    { id: 'N60', desc: 'Cabezales de seguridad (asientos delanteros) – existencia y estado' },
+                    { id: 'N61', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                    { id: 'N62', desc: 'Odómetro – funcionamiento, registro en km' },
+                    { id: 'N63', desc: 'Tacógrafo (N2 >8t, N3) – funcionamiento, precintos, calibración' },
+                    { id: 'N64', desc: 'Indicador de nivel de combustible – funcionamiento' },
+                    { id: 'N65', desc: 'Indicador de presión de aire (sistemas neumáticos) – funcionamiento' },
+                    { id: 'N66', desc: 'Sistema de frenos – pedal firme, luces testigo, sin fugas' },
+                    { id: 'N67', desc: 'Depósito de combustible – fijación, sin fugas, tapa específica, capacidad original' },
+                    { id: 'N68', desc: 'Sistema de escape – sin fugas, fijación, descarga hacia atrás o lateral izquierda' },
+                    { id: 'N69', desc: 'Asiento del conductor – regulación de distancia al timón, respaldo' },
+                    { id: 'N70', desc: 'Desempañador (vehículos desde 2004) – funcionamiento' },
+                    { id: 'N71', desc: 'Alarma sonora de retroceso (N2,N3) – funcionamiento' },
+                    { id: 'N72', desc: 'Extintor (mercancías peligrosas) – presente, carga vigente, fijación accesible' },
+                    { id: 'N73', desc: 'Triángulos de seguridad (2) – presentes y en buen estado' },
+                    { id: 'N74', desc: 'Rueda de repuesto – estado, fijación' },
+                    { id: 'N75', desc: 'Herramientas (gata, llave) – presentes y operativas' },
+                    { id: 'N76', desc: 'Cable o cadena de seguridad (para remolques) – estado y fijación' },
+                    { id: 'N77', desc: 'Dispositivo antiestático (transporte de combustibles) – presente, estado' },
+                    { id: 'N78', desc: 'Freno de escape (N2 desde 2003) – funcionamiento' },
+                    { id: 'N79', desc: 'Freno de motor o retardador (N3 desde 2003) – funcionamiento' },
+                    { id: 'N80', desc: 'Limitador de velocidad (N3) – funcionamiento' },
+                    { id: 'N81', desc: 'ABS (N3 >16t o con O4) – funcionamiento, luces testigo' },
+                ],
+                chasis: [
+                    { id: 'N82', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas, perforaciones indebidas' },
+                    { id: 'N83', desc: 'Suspensión – estado general, sin fugas de aire/líquido, fijaciones' },
+                    { id: 'N84', desc: 'Ejes – sin juego excesivo, fijación correcta, sin deformaciones' },
+                    { id: 'N85', desc: 'Circuitos de freno (tuberías, mangueras) – sin fugas, sin deterioro' },
+                    { id: 'N86', desc: 'Sistema de combustible – sin fugas, estado general' },
+                    { id: 'N87', desc: 'Transmisión / juntas cardánicas – estado, fijación, sin juego excesivo' },
+                    { id: 'N88', desc: 'Sistema de escape – sin fugas, fijación, protección térmica' },
+                    { id: 'N89', desc: 'Anclajes de carrocería al chasis – estado, fijación' },
+                    { id: 'N90', desc: 'Neumáticos (vista inferior) – estado general, profundidad' },
+                ]
+            },
+
+            // -------------------- CATEGORÍA O (remolques) --------------------
+            O: {
+                front: [
+                    { id: 'O01', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja (opcional en O1,O2)' },
+                    { id: 'O02', desc: 'Reflectores delanteros (2) – color blanco (obligatorio en O3,O4)' },
+                    { id: 'O03', desc: 'Enganche / barra de tiro – estado, fijación, sin desgaste excesivo' },
+                    { id: 'O04', desc: 'Placa de rodaje delantera (si tiene) – legible, fijada' },
+                    { id: 'O05', desc: 'Conexiones eléctricas y neumáticas – estado, compatibilidad' },
+                    { id: 'O06', desc: 'Dispositivo de acoplamiento secundario (cadenas/cables) – estado' },
+                ],
+                left: [
+                    { id: 'O07', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo, rojo/blanco alternados' },
+                    { id: 'O08', desc: 'Defensas laterales (O3,O4) – estado, fijación, dimensiones' },
+                    { id: 'O09', desc: 'Luces de posición laterales (si longitud >3 m) – 2 por lado, amarillo/naranja' },
+                    { id: 'O10', desc: 'Luces perimétricas laterales (si ancho >2,10m o alto >3m) – una cada 3m' },
+                    { id: 'O11', desc: 'Neumáticos – profundidad mínima 1,6 mm (O1,O2) / 2,0 mm (O3,O4), sin cortes' },
+                    { id: 'O12', desc: 'Aros – sin deformaciones, tuercas completas y ajustadas' },
+                    { id: 'O13', desc: 'Guardafangos – evitan salpicaduras, sin aristas peligrosas' },
+                    { id: 'O14', desc: 'Rótulos de peso y dimensiones (O3,O4) – legibles, altura ≥100 mm' },
+                    { id: 'O15', desc: 'Sistema de frenos (O2,O3,O4) – estado, sin fugas' },
+                    { id: 'O16', desc: 'Rueda de repuesto – estado, fijación' },
+                ],
+                right: [
+                    { id: 'O17', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo' },
+                    { id: 'O18', desc: 'Defensas laterales (O3,O4) – estado, fijación, dimensiones' },
+                    { id: 'O19', desc: 'Luces de posición laterales (si longitud >3 m) – 2 por lado' },
+                    { id: 'O20', desc: 'Luces perimétricas laterales (si aplica) – una cada 3m' },
+                    { id: 'O21', desc: 'Neumáticos – profundidad mínima 1,6 mm (O1,O2) / 2,0 mm (O3,O4)' },
+                    { id: 'O22', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'O23', desc: 'Guardafangos – evitan salpicaduras' },
+                    { id: 'O24', desc: 'Rótulos de peso y dimensiones (O3,O4) – legibles' },
+                    { id: 'O25', desc: 'Sistema de frenos (O2,O3,O4) – estado, sin fugas' },
+                ],
+                rear: [
+                    { id: 'O26', desc: 'Luces de freno (2) – funcionamiento, color rojo' },
+                    { id: 'O27', desc: 'Luces direccionales posteriores (2) – funcionamiento, color amarillo/naranja/rojo' },
+                    { id: 'O28', desc: 'Luces de posición posterior (2) – funcionamiento, color rojo' },
+                    { id: 'O29', desc: 'Luces de retroceso (1 o 2) – funcionamiento, color blanco' },
+                    { id: 'O30', desc: 'Luces de placa posterior (1 o 2) – iluminan la placa' },
+                    { id: 'O31', desc: 'Reflectores posteriores (2) – estado, color rojo' },
+                    { id: 'O32', desc: 'Luces perimétricas posteriores (si aplica) – 2, color rojo' },
+                    { id: 'O33', desc: 'Luz neblinera posterior (opcional) – funcionamiento, color rojo' },
+                    { id: 'O34', desc: 'Dispositivo antiempotramiento (O2,O3,O4) – presente, altura ≤550 mm' },
+                    { id: 'O35', desc: 'Láminas retroreflectivas posteriores – cubren el ancho del vehículo' },
+                    { id: 'O36', desc: 'Placa de rodaje posterior – legible, fijada correctamente' },
+                    { id: 'O37', desc: 'Parachoques posterior – sin filos cortantes, fijación' },
+                    { id: 'O38', desc: 'Dispositivo de enganche – estado, fijación, seguridad' },
+                ],
+                interior: [
+                    { id: 'O39', desc: 'Sistema de frenos – estado de tuberías, mangueras, sin fugas' },
+                    { id: 'O40', desc: 'Sistema eléctrico – estado de cables, conexiones, luces' },
+                    { id: 'O41', desc: 'Sistema neumático (si tiene) – estado, sin fugas' },
+                    { id: 'O42', desc: 'Dispositivo antiempotramiento – fijación, dimensiones' },
+                    { id: 'O43', desc: 'Cable o cadena de seguridad – estado, fijación' },
+                    { id: 'O44', desc: 'Patas de apoyo (semirremolques) – estado, funcionamiento' },
+                    { id: 'O45', desc: 'King pin / plato de acople – estado, lubricación, desgaste' },
+                ],
+                chasis: [
+                    { id: 'O46', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas' },
+                    { id: 'O47', desc: 'Ejes – sin juego excesivo, fijación correcta, sin deformaciones' },
+                    { id: 'O48', desc: 'Suspensión – estado general, sin fugas, fijaciones' },
+                    { id: 'O49', desc: 'Circuitos de freno – sin fugas, sin deterioro' },
+                    { id: 'O50', desc: 'Sistema de enganche – estado, fijación, desgaste' },
+                    { id: 'O51', desc: 'Neumáticos (vista inferior) – estado general, profundidad' },
+                ]
+            },
+
+            // -------------------- CATEGORÍA S (especiales) --------------------
+            S: {
+                front: [
+                    { id: 'S01', desc: 'Luces bajas – funcionamiento, color blanco/amarillo (según categoría base)' },
+                    { id: 'S02', desc: 'Luces altas – funcionamiento, color blanco/amarillo' },
+                    { id: 'S03', desc: 'Luces direccionales delanteras – funcionamiento' },
+                    { id: 'S04', desc: 'Luces de posición delantera – funcionamiento' },
+                    { id: 'S05', desc: 'Luces perimétricas (si aplica) – funcionamiento' },
+                    { id: 'S06', desc: 'Parabrisas – vidrio de seguridad, sin grietas, transparencia ≥70%' },
+                    { id: 'S07', desc: 'Limpiaparabrisas – funcionamiento' },
+                    { id: 'S08', desc: 'Parachoques delantero – sin filos cortantes, fijación' },
+                    { id: 'S09', desc: 'Espejos retrovisores – estado, fijación, visibilidad' },
+                    { id: 'S10', desc: 'Visor de punto ciego (si aplica) – estado' },
+                    { id: 'S11', desc: 'Bocina – funcionamiento, audible a 100 m' },
+                    { id: 'S12', desc: 'Rótulos de servicio (ambulancia, bomberos, etc.) – visibles, legibles' },
+                    { id: 'S13', desc: 'Circulina / luces de emergencia (SB,SC,SE,SF) – funcionamiento' },
+                ],
+                left: [
+                    { id: 'S14', desc: 'Láminas retroreflectivas – según categoría base' },
+                    { id: 'S15', desc: 'Defensas laterales (si aplica) – estado, fijación' },
+                    { id: 'S16', desc: 'Neumáticos – profundidad según categoría base (M o N)' },
+                    { id: 'S17', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'S18', desc: 'Guardafangos – evitan salpicaduras' },
+                    { id: 'S19', desc: 'Accesorios especiales – bordes redondeados, fijación' },
+                    { id: 'S20', desc: 'Rótulos de peso y dimensiones – legibles' },
+                    { id: 'S21', desc: 'Equipos especiales (grúa, cisterna, etc.) – fijación, estado' },
+                    { id: 'S22', desc: 'Rueda de repuesto – estado, fijación' },
+                ],
+                right: [
+                    { id: 'S23', desc: 'Láminas retroreflectivas – según categoría base' },
+                    { id: 'S24', desc: 'Defensas laterales (si aplica) – estado, fijación' },
+                    { id: 'S25', desc: 'Neumáticos – profundidad según categoría base' },
+                    { id: 'S26', desc: 'Aros – sin deformaciones, tuercas completas' },
+                    { id: 'S27', desc: 'Guardafangos – evitan salpicaduras' },
+                    { id: 'S28', desc: 'Accesorios especiales – bordes redondeados' },
+                    { id: 'S29', desc: 'Rótulos de peso y dimensiones – legibles' },
+                    { id: 'S30', desc: 'Equipos especiales – fijación, estado' },
+                ],
+                rear: [
+                    { id: 'S31', desc: 'Luces de freno – funcionamiento, color rojo' },
+                    { id: 'S32', desc: 'Luces direccionales posteriores – funcionamiento' },
+                    { id: 'S33', desc: 'Luces de posición posterior – funcionamiento' },
+                    { id: 'S34', desc: 'Luces de retroceso – funcionamiento, color blanco' },
+                    { id: 'S35', desc: 'Luces de placa posterior – iluminan la placa' },
+                    { id: 'S36', desc: 'Reflectores posteriores – estado, color rojo' },
+                    { id: 'S37', desc: 'Luces perimétricas posteriores (si aplica) – funcionamiento' },
+                    { id: 'S38', desc: 'Dispositivo antiempotramiento (si aplica) – presente' },
+                    { id: 'S39', desc: 'Láminas retroreflectivas posteriores – cubren el ancho' },
+                    { id: 'S40', desc: 'Placa de rodaje posterior – legible' },
+                    { id: 'S41', desc: 'Rótulos de servicio – visibles, legibles' },
+                    { id: 'S42', desc: 'Circulina / luces de emergencia posteriores – funcionamiento' },
+                ],
+                interior: [
+                    { id: 'S43', desc: 'Cinturones de seguridad – según categoría base, estado' },
+                    { id: 'S44', desc: 'Cabezales de seguridad – existencia y estado' },
+                    { id: 'S45', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                    { id: 'S46', desc: 'Odómetro – funcionamiento' },
+                    { id: 'S47', desc: 'Tacógrafo (si aplica) – funcionamiento' },
+                    { id: 'S48', desc: 'Indicadores – funcionamiento' },
+                    { id: 'S49', desc: 'Sistema de frenos – pedal firme, sin fugas' },
+                    { id: 'S50', desc: 'Depósito de combustible – sin fugas, tapa específica' },
+                    { id: 'S51', desc: 'Sistema de escape – sin fugas, fijación' },
+                    { id: 'S52', desc: 'Asiento del conductor – regulación, estado' },
+                    { id: 'S53', desc: 'Desempañador – funcionamiento' },
+                    { id: 'S54', desc: 'Extintor – presente, carga vigente, fijación accesible' },
+                    { id: 'S55', desc: 'Triángulos de seguridad – presentes' },
+                    { id: 'S56', desc: 'Equipos especiales interiores – estado, fijación' },
+                    { id: 'S57', desc: 'Comunicación (mercancías peligrosas) – funcionamiento' },
+                    { id: 'S58', desc: 'Interruptor principal de batería (si aplica) – funcionamiento' },
+                ],
+                chasis: [
+                    { id: 'S59', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas' },
+                    { id: 'S60', desc: 'Suspensión – estado general, sin fugas' },
+                    { id: 'S61', desc: 'Ejes – sin juego excesivo, fijación correcta' },
+                    { id: 'S62', desc: 'Circuitos de freno – sin fugas, sin deterioro' },
+                    { id: 'S63', desc: 'Sistema de combustible – sin fugas' },
+                    { id: 'S64', desc: 'Transmisión – estado, fijación' },
+                    { id: 'S65', desc: 'Equipos especiales (montaje) – fijación, estado' },
+                ]
+            }
+        };
+
+        // ============================================================
+        // RENDER
+        // ============================================================
+        let currentCategory = 'L';
+        let currentSide = 'front';
+
+        const CAT_NAMES = {
+            L: 'Categoría L (menores)',
+            M: 'Categoría M (pasajeros)',
+            N: 'Categoría N (carga)',
+            O: 'Categoría O (remolques)',
+            S: 'Categoría S (especiales)'
+        };
+
+        function renderChecklist() {
+            const tbody = document.getElementById('checklistBody');
+            const items = ITEMS_DATA[currentCategory]?.[currentSide] || [];
+            if (items.length === 0) {
+                tbody.innerHTML =
+                    `<tr><td colspan="6" style="text-align:center;padding:20px;color:#4a5f78;">No hay ítems definidos para esta combinación</td></tr>`;
+                return;
+            }
+            let html = '';
+            items.forEach((item, idx) => {
+                const num = idx + 1;
+                const name = `chk_${currentCategory}_${currentSide}_${item.id}`;
+                html += `
+                    <tr>
+                        <td class="col-num">${num}</td>
+                        <td class="col-desc">${item.desc}</td>
+                        <td class="col-check"><input type="radio" name="${name}" value="C"></td>
+                        <td class="col-check"><input type="radio" name="${name}" value="NC"></td>
+                        <td class="col-check"><input type="radio" name="${name}" value="NA" checked></td>
+                        <td class="col-obs"><input type="text" placeholder="Observación" id="obs_${item.id}"></td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // ============================================================
+        // EVENT LISTENERS
+        // ============================================================
+        // Category tabs
+        document.querySelectorAll('#catTabs button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#catTabs button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.cat;
+                renderChecklist();
+            });
+        });
+
+        // Side tabs
+        document.querySelectorAll('#sideTabs button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#sideTabs button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentSide = this.dataset.side;
+                renderChecklist();
+            });
+        });
+
+        // ============================================================
+        // FUNCIONES
+        // ============================================================
+        function resetChecklist() {
+            if (!confirm('¿Reiniciar todos los campos del checklist?')) return;
+            // Resetear radios del checklist
+            document.querySelectorAll('#checklistBody input[type="radio"]').forEach(r => {
+                if (r.value === 'NA') r.checked = true;
+                else r.checked = false;
+            });
+            // Resetear observaciones
+            document.querySelectorAll('#checklistBody input[type="text"]').forEach(inp => inp.value = '');
+            // Resetear seguridad
+            document.querySelectorAll('.seg-card input[type="radio"]').forEach(r => {
+                if (r.value === 'NA') r.checked = true;
+                else r.checked = false;
+            });
+            document.querySelectorAll('.seg-card input[type="text"]').forEach(inp => inp.value = '');
+            // Resetear botiquín
+            document.querySelectorAll('.botiquin-tabla input[type="radio"]').forEach(r => {
+                if (r.value === 'NA') r.checked = true;
+                else r.checked = false;
+            });
+            alert('Checklist reiniciado.');
+        }
+
+        function generarReporte() {
+            // Recolectar datos
+            const tipo = document.querySelector('input[name="tipoUnidad"]:checked')?.value || 'unitario';
+            const placa1 = document.getElementById('placa1').value || '_______';
+            const placa2 = document.getElementById('placa2').value || '';
+            const placa3 = document.getElementById('placa3').value || '';
+            const inspector = document.getElementById('inspector').value || 'No especificado';
+            const fecha = document.getElementById('fechaInspeccion').value || new Date().toISOString().split('T')[0];
+
+            const placas = [placa1, placa2, placa3].filter(p => p.trim() !== '').join(' - ') || 'No registrada';
+
+            // Contar cumplimiento del checklist
+            let total = 0,
+                cumple = 0,
+                noCumple = 0,
+                nA = 0;
+            document.querySelectorAll('#checklistBody input[type="radio"]:checked').forEach(r => {
+                total++;
+                if (r.value === 'C') cumple++;
+                else if (r.value === 'NC') noCumple++;
+                else if (r.value === 'NA') nA++;
+            });
+
+            // Seguridad: contar cumplimiento general
+            let segCumple = 0,
+                segTotal = 0;
+            document.querySelectorAll('.seg-card input[type="radio"]:checked').forEach(r => {
+                segTotal++;
+                if (r.value === 'C') segCumple++;
+            });
+
+            const reporte = `
+        =================================================
+        REPORTE DE INSPECCIÓN TÉCNICA VEHICULAR
+        AutoEscuela MTC 2026 – Simulador Oficial de Licencias
+        =================================================
+        Fecha: ${fecha}
+        Inspector: ${inspector}
+        Categoría: ${CAT_NAMES[currentCategory] || currentCategory}
+        Tipo de unidad: ${tipo === 'unitario' ? 'Unitario' : 'Combinado'}
+        Placa(s): ${placas}
+
+        -------- RESULTADOS DEL CHECKLIST --------
+        Ítems revisados: ${total}
+        Cumple: ${cumple}
+        No cumple: ${noCumple}
+        No aplica: ${nA}
+        Tasa de cumplimiento: ${total > 0 ? Math.round((cumple / total) * 100) : 0}%
+
+        -------- EQUIPAMIENTO DE SEGURIDAD --------
+        Ítems de seguridad revisados: ${segTotal}
+        Cumple: ${segCumple}
+        Observaciones generales:
+        (verificar detalles en el checklist)
+
+        -------- OBSERVACIONES DESTACADAS --------
+        ${document.querySelectorAll('#checklistBody input[type="text"]').map(inp => inp.value ? `- ${inp.value}` : '').filter(Boolean).join('\n') || 'Ninguna observación registrada.'}
+
+        =================================================
+        Firma del inspector: _________________________
+        =================================================
+        `;
+
+            // Descargar como .txt
+            const blob = new Blob([reporte], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `Reporte_Inspeccion_${fecha}_${placas.replace(/\s/g,'_')}.txt`;
+            link.click();
+            URL.revokeObjectURL(link.href);
+
+            alert('Reporte generado y descargado como archivo de texto.');
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        document.getElementById('fechaInspeccion').valueAsDate = new Date();
+        renderChecklist();
+    </script>
+</body>
+</html>
