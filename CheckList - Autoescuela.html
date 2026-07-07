@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist - Autoescuela 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           ESTILOS – FONDO OSCURO PROFESIONAL
+           ============================================================ */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0d0d1a;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Arial, sans-serif;
+            padding: 16px;
+            color: #e8edf4;
+        }
+        .app {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: #18182a;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+            padding: 24px 28px 32px;
+        }
+        /* HEADER */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #F5900C;
+            padding-bottom: 16px;
+            margin-bottom: 22px;
+        }
+        .header h1 {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #F5900C;
+            letter-spacing: -0.3px;
+        }
+        .header h1 span { color: #4a9eff; }
+        .header .sub {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #a0b8d0;
+            background: #22223a;
+            padding: 4px 16px;
+            border-radius: 30px;
+            border: 1px solid #3a4a6a;
+        }
+        /* ======= SECCIÓN 1: DATOS GENERALES ======= */
+        .seccion-datos {
+            background: #1a1a2e;
+            border-radius: 16px;
+            border: 1px solid #3a4a6a;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+        .seccion-datos .grid-datos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px 20px;
+        }
+        .seccion-datos .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .seccion-datos .campo label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #4a9eff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .seccion-datos .campo input, .seccion-datos .campo select {
+            padding: 6px 10px;
+            border: 1px solid #4a5a7a;
+            border-radius: 6px;
+            font-size: 13px;
+            background: #12121e;
+            color: #e8edf4;
+            font-family: inherit;
+        }
+        .seccion-datos .campo input:focus {
+            border-color: #F5900C;
+            outline: none;
+        }
+        .seccion-datos .campo input[type="text"] { min-width: 120px; }
+        .seccion-datos .campo .radio-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding-top: 4px;
+        }
+        .seccion-datos .campo .radio-group label {
+            font-weight: 400;
+            color: #c0d0e0;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-transform: none;
+        }
+        .seccion-datos .campo .radio-group input[type="radio"] {
+            accent-color: #F5900C;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ======= SECCIÓN 2: SELECCIÓN DE CATEGORÍA ======= */
+        .seccion-categoria {
+            background: #1a1a2e;
+            border-radius: 16px;
+            border: 1px solid #3a4a6a;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+        .seccion-categoria h2 {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 18px;
+            color: #F5900C;
+            margin-bottom: 10px;
+        }
+        .seccion-categoria .cat-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .seccion-categoria .cat-grid button {
+            padding: 8px 20px;
+            border: 2px solid #3a4a6a;
+            border-radius: 30px;
+            background: transparent;
+            color: #a0b8d0;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+        }
+        .seccion-categoria .cat-grid button:hover {
+            background: #2a2a4a;
+            border-color: #4a9eff;
+            color: #fff;
+        }
+        .seccion-categoria .cat-grid button.active {
+            background: #F5900C;
+            border-color: #F5900C;
+            color: #12121e;
+            box-shadow: 0 0 12px rgba(245,144,12,0.3);
+        }
+        .seccion-categoria .cat-grid button .badge {
+            font-size: 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 0 8px;
+            margin-left: 4px;
+        }
+        .seccion-categoria .cat-grid button.active .badge {
+            background: rgba(0,0,0,0.2);
+        }
+
+        /* ======= SECCIÓN 3: REVISIÓN POR PASOS ======= */
+        .seccion-revision {
+            background: #12121e;
+            border-radius: 16px;
+            border: 1px solid #3a4a6a;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+        }
+        .seccion-revision .pasos-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #3a4a6a;
+            padding-bottom: 10px;
+        }
+        .seccion-revision .pasos-header .paso-btn {
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid #4a5a7a;
+            background: transparent;
+            color: #6a7a8a;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: default;
+            transition: 0.2s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .seccion-revision .pasos-header .paso-btn.active {
+            background: #F5900C;
+            border-color: #F5900C;
+            color: #12121e;
+            cursor: pointer;
+        }
+        .seccion-revision .pasos-header .paso-btn.completado {
+            background: #0B4983;
+            border-color: #0B4983;
+            color: #fff;
+            cursor: pointer;
+        }
+        .seccion-revision .pasos-header .paso-btn.completado::after {
+            content: " ✓";
+        }
+        .seccion-revision .pasos-header .paso-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .seccion-revision .pasos-header .indicador-paso {
+            margin-left: auto;
+            font-size: 13px;
+            color: #a0b8d0;
+            background: #1a1a2e;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid #3a4a6a;
+        }
+        .seccion-revision .pasos-header .indicador-paso strong { color: #F5900C; }
+
+        /* Contenido del paso */
+        .paso-contenido {
+            margin-top: 8px;
+        }
+        .paso-contenido .nav-botones {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .paso-contenido .nav-botones button {
+            padding: 8px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+        }
+        .paso-contenido .nav-botones .btn-siguiente {
+            background: #F5900C;
+            color: #12121e;
+        }
+        .paso-contenido .nav-botones .btn-siguiente:hover:not(:disabled) {
+            background: #d97a0a;
+        }
+        .paso-contenido .nav-botones .btn-siguiente:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .paso-contenido .nav-botones .btn-anterior {
+            background: #3a4a6a;
+            color: #e0e8f0;
+        }
+        .paso-contenido .nav-botones .btn-anterior:hover {
+            background: #4a5a7a;
+        }
+        .paso-contenido .mensaje-completado {
+            text-align: center;
+            padding: 12px;
+            color: #4a9eff;
+            font-weight: 600;
+            background: #1a1a2e;
+            border-radius: 8px;
+            border: 1px solid #4a9eff;
+            margin-top: 12px;
+        }
+        .paso-contenido .mensaje-terminado {
+            text-align: center;
+            padding: 12px;
+            color: #F5900C;
+            font-weight: 700;
+            background: #1a1a2e;
+            border-radius: 8px;
+            border: 2px solid #F5900C;
+            margin-top: 12px;
+            font-size: 16px;
+        }
+
+        /* TABLA DE CHECKLIST – NUEVO ORDEN DE COLUMNAS */
+        .checklist-wrap {
+            overflow-x: auto;
+            margin-top: 6px;
+            border-radius: 12px;
+            border: 1px solid #3a4a6a;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            min-width: 900px;
+            font-family: inherit;
+        }
+        thead th {
+            background: #0B4983;
+            color: #ffffff;
+            padding: 6px 5px;
+            text-align: left;
+            font-weight: 700;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 4;
+            white-space: nowrap;
+        }
+        tbody td {
+            padding: 4px 5px;
+            border-bottom: 1px solid #2a3a5a;
+            vertical-align: middle;
+            color: #d0dce8;
+        }
+        tbody tr:hover { background: #1a1a2e; }
+        .col-num {
+            width: 32px;
+            text-align: center;
+            font-weight: 700;
+            color: #4a9eff;
+            font-size: 11px;
+            background: #0d0d1a;
+        }
+        .col-desc { min-width: 150px; font-size: 12px; color: #e0e8f0; }
+        .col-cant { width: 50px; text-align: center; }
+        .col-medida { width: 60px; text-align: center; }
+        .col-check {
+            width: 60px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .col-obs { min-width: 90px; }
+        .col-check input[type="radio"] {
+            accent-color: #F5900C;
+            width: 13px;
+            height: 13px;
+            margin: 0 1px;
+            cursor: pointer;
+            filter: invert(0.9);
+        }
+        .col-check .label-inline {
+            font-size: 9px;
+            color: #a0b8d0;
+            display: inline-block;
+            margin: 0 1px;
+        }
+        .col-obs input[type="text"] {
+            width: 100%;
+            border: 1px solid #4a5a7a;
+            border-radius: 4px;
+            padding: 2px 4px;
+            font-size: 11px;
+            background: #0d0d1a;
+            color: #e0e8f0;
+            min-width: 60px;
+            font-family: inherit;
+        }
+        .col-obs input[type="text"]:focus {
+            border-color: #4a9eff;
+            outline: none;
+            background: #1a1a2e;
+        }
+
+        /* SEGURIDAD (paso final) */
+        .seguridad-paso {
+            margin-top: 0;
+        }
+        .seguridad-paso .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 780px) {
+            .seguridad-paso .grid { grid-template-columns: 1fr; }
+        }
+        .seg-card {
+            background: #0d0d1a;
+            border: 1px solid #3a4a6a;
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+        .seg-card h3 {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 16px;
+            color: #4a9eff;
+            border-bottom: 2px solid #3a4a6a;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .seg-card table {
+            font-size: 11.5px;
+            min-width: 550px;
+            border-collapse: collapse;
+        }
+        .seg-card table th {
+            background: #0B4983;
+            color: #ffffff;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-weight: 700;
+            padding: 4px 4px;
+            text-align: left;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+        .seg-card table td {
+            padding: 3px 4px;
+            border-bottom: 1px solid #2a3a5a;
+            vertical-align: middle;
+            color: #d0dce8;
+        }
+        .seg-card table .chk-cell {
+            text-align: center;
+            white-space: nowrap;
+        }
+        .seg-card table .chk-cell input[type="radio"] {
+            accent-color: #F5900C;
+            width: 12px;
+            height: 12px;
+            margin: 0 1px;
+            cursor: pointer;
+            filter: invert(0.9);
+        }
+        .seg-card table .chk-cell .label-inline {
+            font-size: 8px;
+            color: #a0b8d0;
+            display: inline-block;
+            margin: 0 1px;
+        }
+        .seg-card table .obs-cell input[type="text"] {
+            width: 100%;
+            border: 1px solid #4a5a7a;
+            border-radius: 4px;
+            padding: 2px 3px;
+            font-size: 10px;
+            background: #0d0d1a;
+            color: #e0e8f0;
+            min-width: 40px;
+            font-family: inherit;
+        }
+        .seg-card .extintor-info {
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 6px 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #a0b8d0;
+            border-left: 4px solid #F5900C;
+        }
+        .seg-card .extintor-info table {
+            min-width: unset;
+            width: auto;
+            font-size: 12px;
+        }
+        .seg-card .extintor-info td {
+            padding: 1px 10px 1px 0;
+            border: none;
+            color: #c0d0e0;
+        }
+        .seg-card .extintor-info td:first-child { font-weight: 600; color: #4a9eff; }
+
+        /* ACCIONES */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 22px;
+            justify-content: flex-end;
+            border-top: 1px solid #3a4a6a;
+            padding-top: 18px;
+        }
+        .actions button {
+            padding: 10px 28px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Barlow Semi Condensed', sans-serif;
+        }
+        .btn-primary { background: #F5900C; color: #12121e; }
+        .btn-primary:hover { background: #d97a0a; }
+        .btn-secondary { background: #3a4a6a; color: #e0e8f0; }
+        .btn-secondary:hover { background: #4a5a7a; }
+        .btn-success { background: #0B4983; color: #ffffff; }
+        .btn-success:hover { background: #093a69; }
+        .footer-info {
+            margin-top: 18px;
+            font-size: 12.5px;
+            color: #6a7a8a;
+            text-align: center;
+            border-top: 1px solid #3a4a6a;
+            padding-top: 14px;
+            font-family: inherit;
+        }
+        .footer-info strong { color: #4a9eff; }
+
+        @media (max-width: 700px) {
+            .app { padding: 14px; }
+            .header h1 { font-size: 20px; }
+            .seccion-datos .grid-datos { grid-template-columns: 1fr; }
+            .seccion-categoria .cat-grid button { font-size: 12px; padding: 6px 14px; }
+            .seccion-revision .pasos-header .paso-btn { font-size: 10px; padding: 4px 10px; }
+            .paso-contenido .nav-botones button { font-size: 12px; padding: 6px 16px; }
+            table { font-size: 11px; min-width: 700px; }
+            .col-desc { min-width: 120px; }
+            .col-check { width: 45px; }
+            .col-check input[type="radio"] { width: 11px; height: 11px; }
+            .col-obs { min-width: 60px; }
+            .seg-card table { min-width: 400px; }
+        }
+        @media print {
+            body { background: #fff; padding: 0; }
+            .app { box-shadow: none; border-radius: 0; padding: 16px; background: #fff; }
+            .actions { display: none; }
+            .seccion-categoria .cat-grid button { background: #eef2f7; border: 1px solid #aaa; color: #333; }
+            .seccion-categoria .cat-grid button.active { background: #F5900C; color: #fff; border-color: #F5900C; }
+            .seccion-revision .pasos-header .paso-btn { border: 1px solid #aaa; color: #333; }
+            .seccion-revision .pasos-header .paso-btn.active { background: #F5900C; color: #fff; }
+            .seccion-revision .pasos-header .paso-btn.completado { background: #0B4983; color: #fff; }
+            .seccion-datos .campo input, .seccion-datos .campo select { border: 1px solid #888; background: #fff; color: #000; }
+            .seg-card { break-inside: avoid; background: #f6faff; border: 1px solid #ccc; }
+            .seg-card table td, .seg-card table th { color: #000; }
+            .checklist-wrap { border: 1px solid #aaa; }
+            thead th { background: #0B4983 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .col-num { background: #f0f6fd !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .col-desc { color: #000; }
+            tbody td { color: #000; }
+            .seg-card .extintor-info td { color: #000; }
+        }
+    </style>
+</head>
+<body>
+<div class="app" id="app">
+
+    <!-- ==================== HEADER ==================== -->
+    <div class="header">
+        <div>
+            <h1>🚗 <span>Checklist</span> Autoescuela 2026</h1>
+            <div style="font-size:14px;color:#a0b8d0;margin-top:2px;">Checklist de Inspección Técnica – DS 058-2003-MTC / D.S. 017-2009-MTC</div>
+        </div>
+        <div class="sub">Simulador Oficial de Licencias</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 1: DATOS GENERALES                                    -->
+    <!-- ============================================================ -->
+    <div class="seccion-datos">
+        <div class="grid-datos">
+            <div class="campo">
+                <label>Empresa / Razón Social</label>
+                <input type="text" id="empresa" value="Checklist - Autoescuela 2026" style="min-width:180px;">
+            </div>
+            <div class="campo">
+                <label>RUC</label>
+                <input type="text" id="ruc" placeholder="20xxxxxxxx" value="">
+            </div>
+            <div class="campo">
+                <label>Placa(s)</label>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                    <input type="text" placeholder="Placa 1" id="placa1" style="width:100px;">
+                    <input type="text" placeholder="Placa 2" id="placa2" style="width:100px;">
+                    <input type="text" placeholder="Placa 3" id="placa3" style="width:100px;">
+                </div>
+            </div>
+            <div class="campo">
+                <label>Inspector</label>
+                <input type="text" id="inspector" placeholder="Nombres y apellidos">
+            </div>
+            <div class="campo">
+                <label>Fecha</label>
+                <input type="date" id="fechaInspeccion">
+            </div>
+            <div class="campo">
+                <label>Tipo de unidad</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="tipoUnidad" value="unitario" checked> Unitario</label>
+                    <label><input type="radio" name="tipoUnidad" value="combinado"> Combinado</label>
+                </div>
+            </div>
+            <div class="campo">
+                <label>Uso del vehículo</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="usoVehiculo" value="pasajeros" checked> Pasajeros</label>
+                    <label><input type="radio" name="usoVehiculo" value="mercancias"> Mercancías</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 2: SELECCIÓN DE CATEGORÍA                            -->
+    <!-- ============================================================ -->
+    <div class="seccion-categoria" id="seccionCategoria">
+        <h2>2. Selecciona la categoría del vehículo a revisar</h2>
+        <div class="cat-grid" id="catGrid">
+            <button data-cat="L">L <span class="badge">menores</span></button>
+            <button data-cat="M">M <span class="badge">pasajeros</span></button>
+            <button data-cat="N">N <span class="badge">carga</span></button>
+            <button data-cat="O">O <span class="badge">remolques</span></button>
+            <button data-cat="NO">N + O <span class="badge">combinado</span></button>
+            <button data-cat="S">S <span class="badge">especiales</span></button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECCIÓN 3: REVISIÓN POR PASOS                                -->
+    <!-- ============================================================ -->
+    <div class="seccion-revision" id="seccionRevision">
+        <div class="pasos-header">
+            <span class="paso-btn" data-paso="1">1. Frontal</span>
+            <span class="paso-btn" data-paso="2">2. Lateral Izq.</span>
+            <span class="paso-btn" data-paso="3">3. Posterior</span>
+            <span class="paso-btn" data-paso="4">4. Lateral Der.</span>
+            <span class="paso-btn" data-paso="5">5. Interior</span>
+            <span class="paso-btn" data-paso="6">6. Seguridad</span>
+            <span class="indicador-paso" id="indicadorPaso">Paso: <strong id="pasoActualLabel">1</strong> de 6</span>
+        </div>
+        <div id="contenidoPaso" class="paso-contenido">
+            <!-- Aquí se renderiza la tabla o seguridad con navegación -->
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ACCIONES                                                     -->
+    <!-- ============================================================ -->
+    <div class="actions">
+        <button class="btn-secondary" id="btnReiniciar">🔄 Reiniciar checklist</button>
+        <button class="btn-primary" id="btnReporte">📄 Generar reporte</button>
+        <button class="btn-success" id="btnImprimir">🖨️ Imprimir / PDF</button>
+        <button class="btn-primary" id="btnCompartir">📤 Compartir PDF</button>
+    </div>
+
+    <div class="footer-info">
+        <strong>Checklist - Autoescuela 2026</strong> – Simulador Oficial de Licencias de Conducir · Documento de inspección basado en DS 058-2003-MTC y D.S. 017-2009-MTC
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // DATA: ítems por categoría y lateral (completo)
+    // ============================================================
+    const ITEMS_DATA = {
+        L: {
+            front: [
+                { id: 'L01', desc: 'Luces bajas (1 o 2) – funcionamiento, color blanco/amarillo' },
+                { id: 'L02', desc: 'Luces altas (1 o 2) – funcionamiento, color blanco/amarillo' },
+                { id: 'L03', desc: 'Luces direccionales delanteras (2) – funcionamiento, color amarillo/naranja' },
+                { id: 'L04', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja' },
+                { id: 'L05', desc: 'Parabrisas (si tiene) – vidrio de seguridad, sin grietas' },
+                { id: 'L06', desc: 'Espejo retrovisor izquierdo – estado, fijación, visibilidad' },
+                { id: 'L07', desc: 'Espejo retrovisor derecho (obligatorio en L2,L4,L5) – estado' },
+                { id: 'L08', desc: 'Bocina – sonido uniforme, audible a 50 m' },
+                { id: 'L09', desc: 'Placa de rodaje – legible, fijada correctamente' },
+                { id: 'L10', desc: 'Guardabarros – evitan salpicaduras, sin aristas peligrosas' },
+                { id: 'L11', desc: 'Parachoques delantero – sin filos cortantes, fijación firme' },
+            ],
+            left: [
+                { id: 'L12', desc: 'Neumáticos – profundidad mínima 0,8 mm, sin cortes ni deformaciones' },
+                { id: 'L13', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'L14', desc: 'Suspensión – estado general, sin fugas' },
+                { id: 'L15', desc: 'Escape – ubicación, descarga hacia atrás' },
+                { id: 'L16', desc: 'Depósito de combustible – sin fugas, tapa específica' },
+                { id: 'L17', desc: 'Sistema de frenos – estado de cables, fundas, pastillas' },
+            ],
+            right: [
+                { id: 'L18', desc: 'Neumáticos – profundidad mínima 0,8 mm, sin cortes' },
+                { id: 'L19', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'L20', desc: 'Suspensión – estado general, sin fugas' },
+                { id: 'L21', desc: 'Escape – ubicación, descarga hacia atrás' },
+                { id: 'L22', desc: 'Depósito de combustible – sin fugas, tapa específica' },
+                { id: 'L23', desc: 'Sistema de frenos – estado de cables, fundas, pastillas' },
+            ],
+            rear: [
+                { id: 'L24', desc: 'Luz de freno (1 o 2) – funcionamiento, color rojo' },
+                { id: 'L25', desc: 'Luces direccionales posteriores (2) – funcionamiento' },
+                { id: 'L26', desc: 'Luces de posición posterior (1 o 2) – color rojo' },
+                { id: 'L27', desc: 'Luz de placa posterior (1) – ilumina la placa' },
+                { id: 'L28', desc: 'Reflectores posteriores (1 o 2) – estado, color rojo' },
+                { id: 'L29', desc: 'Placa de rodaje posterior – legible, fijada' },
+                { id: 'L30', desc: 'Parachoques posterior – sin filos cortantes' },
+            ],
+            interior: [
+                { id: 'L31', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                { id: 'L32', desc: 'Odómetro – funcionamiento, registro en km' },
+                { id: 'L33', desc: 'Indicador de nivel de combustible – funcionamiento' },
+                { id: 'L34', desc: 'Luz testigo de direccionales – funcionamiento' },
+                { id: 'L35', desc: 'Luz testigo de luz alta – funcionamiento' },
+                { id: 'L36', desc: 'Asiento del conductor – estado, fijación' },
+                { id: 'L37', desc: 'Dispositivos para descansar pies – presentes' },
+                { id: 'L38', desc: 'Cinturón de seguridad (si tiene) – estado, hebilla' },
+            ],
+            chasis: [
+                { id: 'L39', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas' },
+                { id: 'L40', desc: 'Ejes – sin juego excesivo, fijación correcta' },
+                { id: 'L41', desc: 'Suspensión – estado de resortes, amortiguadores' },
+                { id: 'L42', desc: 'Sistema de escape – sin fugas, fijación' },
+            ]
+        },
+        M: {
+            front: [
+                { id: 'M01', desc: 'Luces bajas (2 o 4) – funcionamiento, color blanco/amarillo, 40W min' },
+                { id: 'M02', desc: 'Luces altas (2 o 4) – funcionamiento, color blanco/amarillo, 45W min' },
+                { id: 'M03', desc: 'Luces direccionales delanteras (2) – funcionamiento, color amarillo/naranja' },
+                { id: 'M04', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja' },
+                { id: 'M05', desc: 'Luces perimétricas (si ancho >2,10m o alto >3m) – 2, blanco/amarillo' },
+                { id: 'M06', desc: 'Luces neblineras delanteras (opcional) – funcionamiento' },
+                { id: 'M07', desc: 'Parabrisas – vidrio laminado, transparencia ≥70%, campo de visión claro' },
+                { id: 'M08', desc: 'Limpiaparabrisas y lavaparabrisas – funcionamiento, plumillas en buen estado' },
+                { id: 'M09', desc: 'Parachoques delantero – sin filos cortantes, fijación firme' },
+                { id: 'M10', desc: 'Placa de rodaje delantera – legible, fijada correctamente' },
+                { id: 'M11', desc: 'Espejo retrovisor izquierdo – estado, fijación, visibilidad clara' },
+                { id: 'M12', desc: 'Espejo retrovisor derecho – estado, fijación, visibilidad clara' },
+                { id: 'M13', desc: 'Visor de punto ciego (M2 >15 pasajeros) – estado y fijación' },
+                { id: 'M14', desc: 'Bocina – sonido uniforme, audible a 100 m' },
+                { id: 'M15', desc: 'Láminas retroreflectivas delanteras (servicio de taxi) – según Anexo III' },
+                { id: 'M16', desc: 'Cabezales de seguridad en asientos delanteros – existencia y estado' },
+            ],
+            left: [
+                { id: 'M17', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo, rojo/blanco alternados' },
+                { id: 'M18', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado, amarillo/naranja' },
+                { id: 'M19', desc: 'Luces perimétricas laterales (si ancho >2,10m o alto >3m) – una cada 3m' },
+                { id: 'M20', desc: 'Neumáticos – profundidad mínima 1,6 mm (M1,M2) / 2,0 mm (M3), sin cortes' },
+                { id: 'M21', desc: 'Aros – sin deformaciones, tuercas completas y ajustadas' },
+                { id: 'M22', desc: 'Guardafangos – evitan salpicaduras, sin aristas peligrosas' },
+                { id: 'M23', desc: 'Accesorios laterales – bordes redondeados, no sobresalen >50 mm del ancho' },
+                { id: 'M24', desc: 'Rótulos de peso y dimensiones (M3) – legibles, altura ≥100 mm' },
+                { id: 'M25', desc: 'Puertas de servicio (M2,M3) – funcionamiento, asideros' },
+                { id: 'M26', desc: 'Salidas de emergencia (M2,M3) – señalizadas, funcionamiento' },
+                { id: 'M27', desc: 'Rueda de repuesto – estado, fijación, presión adecuada' },
+                { id: 'M28', desc: 'Herramientas (gata, llave) – presentes y en condiciones de uso' },
+            ],
+            right: [
+                { id: 'M29', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo' },
+                { id: 'M30', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado' },
+                { id: 'M31', desc: 'Luces perimétricas laterales (si aplica) – una cada 3m' },
+                { id: 'M32', desc: 'Neumáticos – profundidad mínima 1,6 mm (M1,M2) / 2,0 mm (M3)' },
+                { id: 'M33', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'M34', desc: 'Guardafangos – evitan salpicaduras' },
+                { id: 'M35', desc: 'Accesorios laterales – bordes redondeados, sin aristas' },
+                { id: 'M36', desc: 'Rótulos de peso y dimensiones (M3) – legibles' },
+                { id: 'M37', desc: 'Puertas de servicio (M2,M3) – funcionamiento, asideros' },
+                { id: 'M38', desc: 'Salidas de emergencia (M2,M3) – señalizadas' },
+                { id: 'M39', desc: 'Rueda de repuesto – estado, fijación' },
+                { id: 'M40', desc: 'Herramientas – presentes y operativas' },
+            ],
+            rear: [
+                { id: 'M41', desc: 'Luces de freno (2) – funcionamiento, color rojo, activación al presionar pedal' },
+                { id: 'M42', desc: 'Luces direccionales posteriores (2) – funcionamiento, color amarillo/naranja/rojo' },
+                { id: 'M43', desc: 'Luces de posición posterior (2) – funcionamiento, color rojo' },
+                { id: 'M44', desc: 'Luces de retroceso (1 o 2) – funcionamiento, color blanco' },
+                { id: 'M45', desc: 'Luces de placa posterior (1 o 2) – iluminan la placa' },
+                { id: 'M46', desc: 'Reflectores posteriores (2) – estado, color rojo' },
+                { id: 'M47', desc: 'Luces perimétricas posteriores (si aplica) – 2, color rojo' },
+                { id: 'M48', desc: 'Luz neblinera posterior (opcional) – funcionamiento, color rojo' },
+                { id: 'M49', desc: 'Dispositivo antiempotramiento (M3) – presente, altura ≤550 mm' },
+                { id: 'M50', desc: 'Láminas retroreflectivas posteriores – cubren el ancho del vehículo' },
+                { id: 'M51', desc: 'Placa de rodaje posterior – legible, fijada correctamente' },
+                { id: 'M52', desc: 'Parachoques posterior – sin filos cortantes, fijación' },
+                { id: 'M53', desc: 'Rótulos de servicio (escolar, turístico, etc.) – visibles, legibles' },
+            ],
+            interior: [
+                { id: 'M54', desc: 'Cinturones de seguridad (piloto y copiloto) – 3 puntos, estado, hebillas' },
+                { id: 'M55', desc: 'Cinturones de seguridad posteriores (M1) – 2 puntos mínimo' },
+                { id: 'M56', desc: 'Cabezales de seguridad (asientos delanteros) – existencia y estado' },
+                { id: 'M57', desc: 'Cabezales de seguridad (segunda fila, M1 desde 2005) – 2 mínimo' },
+                { id: 'M58', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                { id: 'M59', desc: 'Odómetro – funcionamiento, registro en km' },
+                { id: 'M60', desc: 'Tacógrafo (M3) – funcionamiento, precintos, calibración' },
+                { id: 'M61', desc: 'Indicador de nivel de combustible – funcionamiento' },
+                { id: 'M62', desc: 'Indicador de presión de aire (sistemas neumáticos) – funcionamiento' },
+                { id: 'M63', desc: 'Sistema de frenos – pedal firme, luces testigo, sin fugas' },
+                { id: 'M64', desc: 'Depósito de combustible – fijación, sin fugas, tapa específica' },
+                { id: 'M65', desc: 'Sistema de escape – sin fugas, fijación, descarga hacia atrás o lateral izquierda' },
+                { id: 'M66', desc: 'Asiento del conductor – regulación de distancia al timón' },
+                { id: 'M67', desc: 'Desempañador (vehículos desde 2004) – funcionamiento' },
+                { id: 'M68', desc: 'Alarma sonora de retroceso (M2,M3) – funcionamiento' },
+                { id: 'M69', desc: 'Extintor (M2,M3) – presente, carga vigente, fijación accesible' },
+                { id: 'M70', desc: 'Triángulos de seguridad (2) – presentes y en buen estado' },
+                { id: 'M71', desc: 'Luces interiores – funcionamiento, color blanco' },
+                { id: 'M72', desc: 'Agarraderas y pasamanos (M2,M3) – estado, fijación' },
+                { id: 'M73', desc: 'Piso (M2,M3) – antideslizante, sin rajaduras' },
+                { id: 'M74', desc: 'Ventilación (M2,M3) – funcionamiento' },
+                { id: 'M75', desc: 'Rueda de repuesto – estado, fijación' },
+                { id: 'M76', desc: 'Herramientas (gata, llave) – presentes y operativas' },
+                { id: 'M77', desc: 'Sistema de transmisión de señal GPS (obligatorio para ámbito nacional en M1, M2, M3)' },
+            ],
+            chasis: [
+                { id: 'M78', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas, perforaciones indebidas' },
+                { id: 'M79', desc: 'Suspensión – estado general, sin fugas de aire/líquido, fijaciones' },
+                { id: 'M80', desc: 'Ejes – sin juego excesivo, fijación correcta, sin deformaciones' },
+                { id: 'M81', desc: 'Circuitos de freno (tuberías, mangueras) – sin fugas, sin deterioro' },
+                { id: 'M82', desc: 'Sistema de combustible – sin fugas, estado general' },
+                { id: 'M83', desc: 'Transmisión / juntas cardánicas – estado, fijación, sin juego excesivo' },
+                { id: 'M84', desc: 'Sistema de escape – sin fugas, fijación, protección térmica (M2,M3)' },
+                { id: 'M85', desc: 'Anclajes de carrocería al chasis – estado, fijación' },
+            ]
+        },
+        N: {
+            front: [
+                { id: 'N01', desc: 'Luces bajas (2 o 4) – funcionamiento, color blanco/amarillo, 40W min' },
+                { id: 'N02', desc: 'Luces altas (2 o 4) – funcionamiento, color blanco/amarillo, 45W min' },
+                { id: 'N03', desc: 'Luces direccionales delanteras (2) – funcionamiento, color amarillo/naranja' },
+                { id: 'N04', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja' },
+                { id: 'N05', desc: 'Luces perimétricas (si ancho >2,10m o alto >3m) – 2, blanco/amarillo' },
+                { id: 'N06', desc: 'Luces neblineras delanteras (opcional) – funcionamiento' },
+                { id: 'N07', desc: 'Parabrisas – vidrio laminado, transparencia ≥70%, campo de visión claro' },
+                { id: 'N08', desc: 'Limpiaparabrisas y lavaparabrisas – funcionamiento, plumillas en buen estado' },
+                { id: 'N09', desc: 'Parachoques delantero – sin filos cortantes, fijación firme' },
+                { id: 'N10', desc: 'Placa de rodaje delantera – legible, fijada correctamente' },
+                { id: 'N11', desc: 'Espejo retrovisor izquierdo – estado, fijación, visibilidad clara' },
+                { id: 'N12', desc: 'Espejo retrovisor derecho – estado, fijación, visibilidad clara' },
+                { id: 'N13', desc: 'Visor de punto ciego (N2,N3) – estado y fijación' },
+                { id: 'N14', desc: 'Bocina – sonido uniforme, audible a 100 m' },
+                { id: 'N15', desc: 'Rótulos de peligro (mercancías peligrosas) – visibles, legibles' },
+                { id: 'N16', desc: 'Cabezales de seguridad en asientos delanteros – existencia y estado' },
+            ],
+            left: [
+                { id: 'N17', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo, rojo/blanco alternados' },
+                { id: 'N18', desc: 'Defensas laterales (N2,N3) – estado, fijación, dimensiones según Anexo III' },
+                { id: 'N19', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado, amarillo/naranja' },
+                { id: 'N20', desc: 'Luces perimétricas laterales (si ancho >2,10m o alto >3m) – una cada 3m' },
+                { id: 'N21', desc: 'Neumáticos – profundidad mínima 1,6 mm (N1,N2) / 2,0 mm (N3), sin cortes' },
+                { id: 'N22', desc: 'Aros – sin deformaciones, tuercas completas y ajustadas' },
+                { id: 'N23', desc: 'Guardafangos – evitan salpicaduras, sin aristas peligrosas' },
+                { id: 'N24', desc: 'Accesorios laterales – bordes redondeados, no sobresalen >50 mm del ancho' },
+                { id: 'N25', desc: 'Rótulos de peso y dimensiones (N2,N3) – legibles, altura ≥100 mm' },
+                { id: 'N26', desc: 'Dispositivos de sujeción (transporte de contenedores) – cantidad y estado' },
+                { id: 'N27', desc: 'Conexiones eléctricas y neumáticas (para remolques) – estado, compatibilidad' },
+                { id: 'N28', desc: 'Rueda de repuesto – estado, fijación, presión adecuada' },
+                { id: 'N29', desc: 'Herramientas (gata, llave) – presentes y en condiciones de uso' },
+                { id: 'N30', desc: 'Circulina amarilla (recolección de residuos) – funcionamiento' },
+            ],
+            right: [
+                { id: 'N31', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo' },
+                { id: 'N32', desc: 'Defensas laterales (N2,N3) – estado, fijación, dimensiones' },
+                { id: 'N33', desc: 'Luces de posición laterales (si longitud >6 m) – 2 por lado' },
+                { id: 'N34', desc: 'Luces perimétricas laterales (si aplica) – una cada 3m' },
+                { id: 'N35', desc: 'Neumáticos – profundidad mínima 1,6 mm (N1,N2) / 2,0 mm (N3)' },
+                { id: 'N36', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'N37', desc: 'Guardafangos – evitan salpicaduras' },
+                { id: 'N38', desc: 'Accesorios laterales – bordes redondeados' },
+                { id: 'N39', desc: 'Rótulos de peso y dimensiones (N2,N3) – legibles' },
+                { id: 'N40', desc: 'Dispositivos de sujeción (transporte de contenedores) – estado' },
+                { id: 'N41', desc: 'Conexiones eléctricas y neumáticas – estado, compatibilidad' },
+                { id: 'N42', desc: 'Rueda de repuesto – estado, fijación' },
+                { id: 'N43', desc: 'Herramientas – presentes y operativas' },
+            ],
+            rear: [
+                { id: 'N44', desc: 'Luces de freno (2) – funcionamiento, color rojo, activación al presionar pedal' },
+                { id: 'N45', desc: 'Luces direccionales posteriores (2) – funcionamiento, color amarillo/naranja/rojo' },
+                { id: 'N46', desc: 'Luces de posición posterior (2) – funcionamiento, color rojo' },
+                { id: 'N47', desc: 'Luces de retroceso (1 o 2) – funcionamiento, color blanco' },
+                { id: 'N48', desc: 'Luces de placa posterior (1 o 2) – iluminan la placa' },
+                { id: 'N49', desc: 'Reflectores posteriores (2) – estado, color rojo' },
+                { id: 'N50', desc: 'Luces perimétricas posteriores (si aplica) – 2, color rojo' },
+                { id: 'N51', desc: 'Luz neblinera posterior (opcional) – funcionamiento, color rojo' },
+                { id: 'N52', desc: 'Dispositivo antiempotramiento – presente, altura ≤550 mm, dimensiones' },
+                { id: 'N53', desc: 'Láminas retroreflectivas posteriores – cubren el ancho del vehículo' },
+                { id: 'N54', desc: 'Placa de rodaje posterior – legible, fijada correctamente' },
+                { id: 'N55', desc: 'Rótulos de peligro (mercancías peligrosas) – visibles, legibles' },
+                { id: 'N56', desc: 'Dispositivo de enganche / quinta rueda – estado, fijación, seguridad' },
+                { id: 'N57', desc: 'Parachoques posterior – sin filos cortantes, fijación' },
+                { id: 'N58', desc: 'Longitud total (si >18m) – rótulo posterior legible' },
+            ],
+            interior: [
+                { id: 'N59', desc: 'Cinturones de seguridad (piloto y copiloto) – 3 puntos, estado, hebillas' },
+                { id: 'N60', desc: 'Cabezales de seguridad (asientos delanteros) – existencia y estado' },
+                { id: 'N61', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                { id: 'N62', desc: 'Odómetro – funcionamiento, registro en km' },
+                { id: 'N63', desc: 'Tacógrafo (N2 >8t, N3) – funcionamiento, precintos, calibración' },
+                { id: 'N64', desc: 'Indicador de nivel de combustible – funcionamiento' },
+                { id: 'N65', desc: 'Indicador de presión de aire (sistemas neumáticos) – funcionamiento' },
+                { id: 'N66', desc: 'Sistema de frenos – pedal firme, luces testigo, sin fugas' },
+                { id: 'N67', desc: 'Depósito de combustible – fijación, sin fugas, tapa específica, capacidad original' },
+                { id: 'N68', desc: 'Sistema de escape – sin fugas, fijación, descarga hacia atrás o lateral izquierda' },
+                { id: 'N69', desc: 'Asiento del conductor – regulación de distancia al timón, respaldo' },
+                { id: 'N70', desc: 'Desempañador (vehículos desde 2004) – funcionamiento' },
+                { id: 'N71', desc: 'Alarma sonora de retroceso (N2,N3) – funcionamiento' },
+                { id: 'N72', desc: 'Extintor (mercancías peligrosas) – presente, carga vigente, fijación accesible' },
+                { id: 'N73', desc: 'Triángulos de seguridad (2) – presentes y en buen estado' },
+                { id: 'N74', desc: 'Rueda de repuesto – estado, fijación' },
+                { id: 'N75', desc: 'Herramientas (gata, llave) – presentes y operativas' },
+                { id: 'N76', desc: 'Cable o cadena de seguridad (para remolques) – estado y fijación' },
+                { id: 'N77', desc: 'Dispositivo antiestático (transporte de combustibles) – presente, estado' },
+                { id: 'N78', desc: 'Freno de escape (N2 desde 2003) – funcionamiento' },
+                { id: 'N79', desc: 'Freno de motor o retardador (N3 desde 2003) – funcionamiento' },
+                { id: 'N80', desc: 'Limitador de velocidad (N3) – funcionamiento' },
+                { id: 'N81', desc: 'ABS (N3 >16t o con O4) – funcionamiento, luces testigo' },
+            ],
+            chasis: [
+                { id: 'N82', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas, perforaciones indebidas' },
+                { id: 'N83', desc: 'Suspensión – estado general, sin fugas de aire/líquido, fijaciones' },
+                { id: 'N84', desc: 'Ejes – sin juego excesivo, fijación correcta, sin deformaciones' },
+                { id: 'N85', desc: 'Circuitos de freno (tuberías, mangueras) – sin fugas, sin deterioro' },
+                { id: 'N86', desc: 'Sistema de combustible – sin fugas, estado general' },
+                { id: 'N87', desc: 'Transmisión / juntas cardánicas – estado, fijación, sin juego excesivo' },
+                { id: 'N88', desc: 'Sistema de escape – sin fugas, fijación, protección térmica' },
+                { id: 'N89', desc: 'Anclajes de carrocería al chasis – estado, fijación' },
+                { id: 'N90', desc: 'Neumáticos (vista inferior) – estado general, profundidad' },
+            ]
+        },
+        O: {
+            front: [
+                { id: 'O01', desc: 'Luces de posición delantera (2) – color blanco/amarillo/naranja (opcional en O1,O2)' },
+                { id: 'O02', desc: 'Reflectores delanteros (2) – color blanco (obligatorio en O3,O4)' },
+                { id: 'O03', desc: 'Enganche / barra de tiro – estado, fijación, sin desgaste excesivo' },
+                { id: 'O04', desc: 'Placa de rodaje delantera (si tiene) – legible, fijada' },
+                { id: 'O05', desc: 'Conexiones eléctricas y neumáticas – estado, compatibilidad' },
+                { id: 'O06', desc: 'Dispositivo de acoplamiento secundario (cadenas/cables) – estado' },
+            ],
+            left: [
+                { id: 'O07', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo, rojo/blanco alternados' },
+                { id: 'O08', desc: 'Defensas laterales (O3,O4) – estado, fijación, dimensiones' },
+                { id: 'O09', desc: 'Luces de posición laterales (si longitud >3 m) – 2 por lado, amarillo/naranja' },
+                { id: 'O10', desc: 'Luces perimétricas laterales (si ancho >2,10m o alto >3m) – una cada 3m' },
+                { id: 'O11', desc: 'Neumáticos – profundidad mínima 1,6 mm (O1,O2) / 2,0 mm (O3,O4), sin cortes' },
+                { id: 'O12', desc: 'Aros – sin deformaciones, tuercas completas y ajustadas' },
+                { id: 'O13', desc: 'Guardafangos – evitan salpicaduras, sin aristas peligrosas' },
+                { id: 'O14', desc: 'Rótulos de peso y dimensiones (O3,O4) – legibles, altura ≥100 mm' },
+                { id: 'O15', desc: 'Sistema de frenos (O2,O3,O4) – estado, sin fugas' },
+                { id: 'O16', desc: 'Rueda de repuesto – estado, fijación' },
+            ],
+            right: [
+                { id: 'O17', desc: 'Láminas retroreflectivas laterales – cubren ≥25% del largo' },
+                { id: 'O18', desc: 'Defensas laterales (O3,O4) – estado, fijación, dimensiones' },
+                { id: 'O19', desc: 'Luces de posición laterales (si longitud >3 m) – 2 por lado' },
+                { id: 'O20', desc: 'Luces perimétricas laterales (si aplica) – una cada 3m' },
+                { id: 'O21', desc: 'Neumáticos – profundidad mínima 1,6 mm (O1,O2) / 2,0 mm (O3,O4)' },
+                { id: 'O22', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'O23', desc: 'Guardafangos – evitan salpicaduras' },
+                { id: 'O24', desc: 'Rótulos de peso y dimensiones (O3,O4) – legibles' },
+                { id: 'O25', desc: 'Sistema de frenos (O2,O3,O4) – estado, sin fugas' },
+            ],
+            rear: [
+                { id: 'O26', desc: 'Luces de freno (2) – funcionamiento, color rojo' },
+                { id: 'O27', desc: 'Luces direccionales posteriores (2) – funcionamiento, color amarillo/naranja/rojo' },
+                { id: 'O28', desc: 'Luces de posición posterior (2) – funcionamiento, color rojo' },
+                { id: 'O29', desc: 'Luces de retroceso (1 o 2) – funcionamiento, color blanco' },
+                { id: 'O30', desc: 'Luces de placa posterior (1 o 2) – iluminan la placa' },
+                { id: 'O31', desc: 'Reflectores posteriores (2) – estado, color rojo' },
+                { id: 'O32', desc: 'Luces perimétricas posteriores (si aplica) – 2, color rojo' },
+                { id: 'O33', desc: 'Luz neblinera posterior (opcional) – funcionamiento, color rojo' },
+                { id: 'O34', desc: 'Dispositivo antiempotramiento (O2,O3,O4) – presente, altura ≤550 mm' },
+                { id: 'O35', desc: 'Láminas retroreflectivas posteriores – cubren el ancho del vehículo' },
+                { id: 'O36', desc: 'Placa de rodaje posterior – legible, fijada correctamente' },
+                { id: 'O37', desc: 'Parachoques posterior – sin filos cortantes, fijación' },
+                { id: 'O38', desc: 'Dispositivo de enganche – estado, fijación, seguridad' },
+            ],
+            interior: [
+                { id: 'O39', desc: 'Sistema de frenos – estado de tuberías, mangueras, sin fugas' },
+                { id: 'O40', desc: 'Sistema eléctrico – estado de cables, conexiones, luces' },
+                { id: 'O41', desc: 'Sistema neumático (si tiene) – estado, sin fugas' },
+                { id: 'O42', desc: 'Dispositivo antiempotramiento – fijación, dimensiones' },
+                { id: 'O43', desc: 'Cable o cadena de seguridad – estado, fijación' },
+                { id: 'O44', desc: 'Patas de apoyo (semirremolques) – estado, funcionamiento' },
+                { id: 'O45', desc: 'King pin / plato de acople – estado, lubricación, desgaste' },
+            ],
+            chasis: [
+                { id: 'O46', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas' },
+                { id: 'O47', desc: 'Ejes – sin juego excesivo, fijación correcta, sin deformaciones' },
+                { id: 'O48', desc: 'Suspensión – estado general, sin fugas, fijaciones' },
+                { id: 'O49', desc: 'Circuitos de freno – sin fugas, sin deterioro' },
+                { id: 'O50', desc: 'Sistema de enganche – estado, fijación, desgaste' },
+                { id: 'O51', desc: 'Neumáticos (vista inferior) – estado general, profundidad' },
+            ]
+        },
+        S: {
+            front: [
+                { id: 'S01', desc: 'Luces bajas – funcionamiento, color blanco/amarillo (según categoría base)' },
+                { id: 'S02', desc: 'Luces altas – funcionamiento, color blanco/amarillo' },
+                { id: 'S03', desc: 'Luces direccionales delanteras – funcionamiento' },
+                { id: 'S04', desc: 'Luces de posición delantera – funcionamiento' },
+                { id: 'S05', desc: 'Luces perimétricas (si aplica) – funcionamiento' },
+                { id: 'S06', desc: 'Parabrisas – vidrio de seguridad, sin grietas, transparencia ≥70%' },
+                { id: 'S07', desc: 'Limpiaparabrisas – funcionamiento' },
+                { id: 'S08', desc: 'Parachoques delantero – sin filos cortantes, fijación' },
+                { id: 'S09', desc: 'Espejos retrovisores – estado, fijación, visibilidad' },
+                { id: 'S10', desc: 'Visor de punto ciego (si aplica) – estado' },
+                { id: 'S11', desc: 'Bocina – funcionamiento, audible a 100 m' },
+                { id: 'S12', desc: 'Rótulos de servicio (ambulancia, bomberos, etc.) – visibles, legibles' },
+                { id: 'S13', desc: 'Circulina / luces de emergencia (SB,SC,SE,SF) – funcionamiento' },
+            ],
+            left: [
+                { id: 'S14', desc: 'Láminas retroreflectivas – según categoría base' },
+                { id: 'S15', desc: 'Defensas laterales (si aplica) – estado, fijación' },
+                { id: 'S16', desc: 'Neumáticos – profundidad según categoría base (M o N)' },
+                { id: 'S17', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'S18', desc: 'Guardafangos – evitan salpicaduras' },
+                { id: 'S19', desc: 'Accesorios especiales – bordes redondeados, fijación' },
+                { id: 'S20', desc: 'Rótulos de peso y dimensiones – legibles' },
+                { id: 'S21', desc: 'Equipos especiales (grúa, cisterna, etc.) – fijación, estado' },
+                { id: 'S22', desc: 'Rueda de repuesto – estado, fijación' },
+            ],
+            right: [
+                { id: 'S23', desc: 'Láminas retroreflectivas – según categoría base' },
+                { id: 'S24', desc: 'Defensas laterales (si aplica) – estado, fijación' },
+                { id: 'S25', desc: 'Neumáticos – profundidad según categoría base' },
+                { id: 'S26', desc: 'Aros – sin deformaciones, tuercas completas' },
+                { id: 'S27', desc: 'Guardafangos – evitan salpicaduras' },
+                { id: 'S28', desc: 'Accesorios especiales – bordes redondeados' },
+                { id: 'S29', desc: 'Rótulos de peso y dimensiones – legibles' },
+                { id: 'S30', desc: 'Equipos especiales – fijación, estado' },
+            ],
+            rear: [
+                { id: 'S31', desc: 'Luces de freno – funcionamiento, color rojo' },
+                { id: 'S32', desc: 'Luces direccionales posteriores – funcionamiento' },
+                { id: 'S33', desc: 'Luces de posición posterior – funcionamiento' },
+                { id: 'S34', desc: 'Luces de retroceso – funcionamiento, color blanco' },
+                { id: 'S35', desc: 'Luces de placa posterior – iluminan la placa' },
+                { id: 'S36', desc: 'Reflectores posteriores – estado, color rojo' },
+                { id: 'S37', desc: 'Luces perimétricas posteriores (si aplica) – funcionamiento' },
+                { id: 'S38', desc: 'Dispositivo antiempotramiento (si aplica) – presente' },
+                { id: 'S39', desc: 'Láminas retroreflectivas posteriores – cubren el ancho' },
+                { id: 'S40', desc: 'Placa de rodaje posterior – legible' },
+                { id: 'S41', desc: 'Rótulos de servicio – visibles, legibles' },
+                { id: 'S42', desc: 'Circulina / luces de emergencia posteriores – funcionamiento' },
+            ],
+            interior: [
+                { id: 'S43', desc: 'Cinturones de seguridad – según categoría base, estado' },
+                { id: 'S44', desc: 'Cabezales de seguridad – existencia y estado' },
+                { id: 'S45', desc: 'Velocímetro – funcionamiento, escala en km/h' },
+                { id: 'S46', desc: 'Odómetro – funcionamiento' },
+                { id: 'S47', desc: 'Tacógrafo (si aplica) – funcionamiento' },
+                { id: 'S48', desc: 'Indicadores – funcionamiento' },
+                { id: 'S49', desc: 'Sistema de frenos – pedal firme, sin fugas' },
+                { id: 'S50', desc: 'Depósito de combustible – sin fugas, tapa específica' },
+                { id: 'S51', desc: 'Sistema de escape – sin fugas, fijación' },
+                { id: 'S52', desc: 'Asiento del conductor – regulación, estado' },
+                { id: 'S53', desc: 'Desempañador – funcionamiento' },
+                { id: 'S54', desc: 'Extintor – presente, carga vigente, fijación accesible' },
+                { id: 'S55', desc: 'Triángulos de seguridad – presentes' },
+                { id: 'S56', desc: 'Equipos especiales interiores – estado, fijación' },
+                { id: 'S57', desc: 'Comunicación (mercancías peligrosas) – funcionamiento' },
+                { id: 'S58', desc: 'Interruptor principal de batería (si aplica) – funcionamiento' },
+            ],
+            chasis: [
+                { id: 'S59', desc: 'Bastidor – sin fisuras, corrosión, soldaduras defectuosas' },
+                { id: 'S60', desc: 'Suspensión – estado general, sin fugas' },
+                { id: 'S61', desc: 'Ejes – sin juego excesivo, fijación correcta' },
+                { id: 'S62', desc: 'Circuitos de freno – sin fugas, sin deterioro' },
+                { id: 'S63', desc: 'Sistema de combustible – sin fugas' },
+                { id: 'S64', desc: 'Transmisión – estado, fijación' },
+                { id: 'S65', desc: 'Equipos especiales (montaje) – fijación, estado' },
+            ]
+        }
+    };
+
+    // ============================================================
+    // DATOS BOTIQUÍN (con cantidad y medida)
+    // ============================================================
+    const BOTIQUIN_DATA = {
+        pasajeros: [
+            { desc: 'Apósito esterilizado 10 cm x 10 cm', cant: 5, medida: '10x10 cm' },
+            { desc: 'Jabón antiséptico', cant: 1, medida: '-' },
+            { desc: 'Esparadrapo de 2.5 cm x 5 m', cant: 2, medida: '2.5 cm x 5 m' },
+            { desc: 'Venda elástica 4 x 5 yardas', cant: 2, medida: '4 x 5 yardas' },
+            { desc: 'Tijera punta roma de 3 pulgadas', cant: 1, medida: '3 pulgadas' },
+            { desc: 'Guantes quirúrgicos esterilizados 7 1/2 (par)', cant: 1, medida: '7 1/2' },
+            { desc: 'Algodón x 50 gramos', cant: 1, medida: '50 g' },
+            { desc: 'Alcohol de 70° de 500 ml / 120 ml', cant: 1, medida: '500 ml / 120 ml' },
+            { desc: 'Banda adhesivas (curitas)', cant: 20, medida: '-' },
+            { desc: 'Gasas esterilizadas fraccionadas de 10 cm x 10 cm', cant: 20, medida: '10x10 cm' }
+        ],
+        mercancias: [
+            { desc: 'Apósito esterilizado 10 cm x 10 cm', cant: 5, medida: '10x10 cm' },
+            { desc: 'Jabón antiséptico', cant: 1, medida: '-' },
+            { desc: 'Esparadrapo de 2.5 cm x 5 m', cant: 1, medida: '2.5 cm x 5 m' },
+            { desc: 'Venda elástica 4 x 5 yardas', cant: 1, medida: '4 x 5 yardas' },
+            { desc: 'Tijera punta roma de 3 pulgadas', cant: 1, medida: '3 pulgadas' },
+            { desc: 'Guantes quirúrgicos esterilizados 7 1/2 (par)', cant: 1, medida: '7 1/2' },
+            { desc: 'Algodón x 50 gramos', cant: 1, medida: '50 g' },
+            { desc: 'Alcohol de 70° de 500 ml / 120 ml', cant: 1, medida: '500 ml / 120 ml' },
+            { desc: 'Banda adhesivas (curitas)', cant: 5, medida: '-' },
+            { desc: 'Gasas esterilizadas fraccionadas de 10 cm x 10 cm', cant: 10, medida: '10x10 cm' }
+        ]
+    };
+
+    // ============================================================
+    // DATOS EXTINTOR (con cantidad y medida)
+    // ============================================================
+    const EXTINTOR_DATA = [
+        { desc: 'Extintor PQS tipo ABC', cant: 1, medida: '-' },
+        { desc: 'Número de extintores (según categoría)', cant: 1, medida: '-' },
+        { desc: 'Capacidad de carga (kg) según categoría', cant: 1, medida: 'kg' },
+        { desc: 'Rotulado con fecha de vencimiento', cant: 1, medida: '-' },
+        { desc: 'Instrucciones de uso visibles en castellano', cant: 1, medida: '-' },
+        { desc: 'Manguera de descarga (opcional ≤2kg) – estado', cant: 1, medida: '-' },
+        { desc: 'Manómetro de presión (aguja en zona verde)', cant: 1, medida: '-' },
+        { desc: 'Etiqueta de prueba hidrostática (vigente ≤5 años)', cant: 1, medida: '-' },
+        { desc: 'Precinto y/o sellos de seguridad intactos', cant: 1, medida: '-' },
+        { desc: 'Ubicación accesible, soporte firme y visible', cant: 1, medida: '-' }
+    ];
+
+    // ============================================================
+    // DATOS OTROS ELEMENTOS (con cantidad y medida)
+    // ============================================================
+    const OTROS_DATA = [
+        { desc: 'Conos de seguridad (2)', cant: 2, medida: '-' },
+        { desc: 'Triángulos de seguridad (2)', cant: 2, medida: '-' },
+        { desc: 'Chaleco reflectivo (conductor)', cant: 1, medida: '-' },
+        { desc: 'Gata / gato hidráulico', cant: 1, medida: '-' },
+        { desc: 'Llave de ruedas / cruceta', cant: 1, medida: '-' },
+        { desc: 'Rueda de repuesto (estado y fijación)', cant: 1, medida: '-' },
+        { desc: 'Caja de herramientas (opcional)', cant: 1, medida: '-' },
+        { desc: 'Extintor adicional (si aplica)', cant: 1, medida: '-' }
+    ];
+
+    // ============================================================
+    // EXTINTOR – obtener info
+    // ============================================================
+    function getExtintorInfo(cat) {
+        const map = {
+            'L': { kg: 1, cantidad: 1, clase: '1A:5B:C' },
+            'M1': { kg: 2, cantidad: 1, clase: '1A:10B:C' },
+            'M2': { kg: 4, cantidad: 1, clase: '2A:10B:C' },
+            'M3': { kg: 6, cantidad: 1, clase: '6A:20B:C' },
+            'N1': { kg: 6, cantidad: 1, clase: '6A:20B:C' },
+            'N2': { kg: 9, cantidad: 1, clase: '9A:30B:C' },
+            'N3': { kg: 9, cantidad: 1, clase: '9A:30B:C' },
+            'O1': { kg: 6, cantidad: 1, clase: '6A:20B:C' },
+            'O2': { kg: 6, cantidad: 1, clase: '6A:20B:C' },
+            'O3': { kg: 9, cantidad: 1, clase: '9A:30B:C' },
+            'O4': { kg: 9, cantidad: 1, clase: '9A:30B:C' },
+        };
+        if (cat === 'S') {
+            const uso = document.querySelector('input[name="usoVehiculo"]:checked')?.value || 'pasajeros';
+            return uso === 'mercancias' ? { kg: 9, cantidad: 1, clase: '9A:30B:C' } : { kg: 6, cantidad: 1, clase: '6A:20B:C' };
+        }
+        if (cat === 'L') return map['L'];
+        if (cat === 'M') return map['M1'];
+        if (cat === 'N') return map['N1'];
+        if (cat === 'O') return map['O1'];
+        return { kg: 6, cantidad: 1, clase: '6A:20B:C' };
+    }
+
+    // ============================================================
+    // ESTADO Y LÓGICA DE LA APLICACIÓN
+    // ============================================================
+    let categoriaSeleccionada = null;
+    let pasoActual = 0;
+    let pasosCompletados = [false, false, false, false, false, false];
+
+    const PASO_LATERAL = { 1:'front', 2:'left', 3:'rear', 4:'right', 5:'interior', 6:'seguridad' };
+    const NOMBRE_PASO = { 1:'Frontal', 2:'Lateral Izquierdo', 3:'Posterior', 4:'Lateral Derecho', 5:'Interior / Cabina', 6:'Seguridad' };
+
+    const catGrid = document.getElementById('catGrid');
+    const contenidoPaso = document.getElementById('contenidoPaso');
+    const pasoBtns = document.querySelectorAll('.paso-btn');
+    const pasoActualLabel = document.getElementById('pasoActualLabel');
+
+    // ============================================================
+    // FUNCIONES DE RENDER
+    // ============================================================
+    function getItemsForCategoria(cat, lateral) {
+        if (cat === 'NO') {
+            return [...(ITEMS_DATA.N?.[lateral] || []), ...(ITEMS_DATA.O?.[lateral] || [])];
+        }
+        return ITEMS_DATA[cat]?.[lateral] || [];
+    }
+
+    function renderPaso(paso) {
+        if (!categoriaSeleccionada) {
+            contenidoPaso.innerHTML = `<div style="padding:20px;text-align:center;color:#6a7a8a;">Primero selecciona una categoría en la sección 2.</div>`;
+            return;
+        }
+        if (paso === 6) {
+            renderSeguridadConNavegacion();
+            return;
+        }
+        const lateral = PASO_LATERAL[paso];
+        const items = getItemsForCategoria(categoriaSeleccionada, lateral);
+        if (!items.length) {
+            contenidoPaso.innerHTML = `<div style="padding:20px;text-align:center;color:#6a7a8a;">No hay ítems para esta combinación.</div>`;
+            return;
+        }
+        let html = `<div class="checklist-wrap"><table><thead><tr>
+            <th style="width:32px;">N°</th>
+            <th style="min-width:150px;">Descripción</th>
+            <th style="width:50px;">Cant.</th>
+            <th style="width:60px;">Medidas</th>
+            <th style="width:55px;">Cumple</th>
+            <th style="width:55px;">No Cumple</th>
+            <th style="width:55px;">No cuenta</th>
+            <th style="width:55px;">No aplica</th>
+            <th style="min-width:90px;">Observación</th>
+        </tr></thead><tbody>`;
+        items.forEach((item, idx) => {
+            const num = idx + 1;
+            const name = `chk_${categoriaSeleccionada}_${lateral}_${item.id}`;
+            html += `
+                <tr>
+                    <td class="col-num">${num}</td>
+                    <td class="col-desc">${item.desc}</td>
+                    <td class="col-cant">-</td>
+                    <td class="col-medida">-</td>
+                    <td class="col-check"><input type="radio" name="${name}" value="C"></td>
+                    <td class="col-check"><input type="radio" name="${name}" value="NC"></td>
+                    <td class="col-check"><input type="radio" name="${name}" value="NT"></td>
+                    <td class="col-check"><input type="radio" name="${name}" value="NA"></td>
+                    <td class="col-obs"><input type="text" placeholder="Obs" id="obs_${item.id}"></td>
+                </tr>
+            `;
+        });
+        html += `</tbody></table></div>`;
+
+        const completado = pasosCompletados[paso-1];
+        html += `<div class="nav-botones">
+            <div>${paso > 1 ? `<button class="btn-anterior" id="btnAnterior">⬅ Anterior</button>` : ''}</div>
+            <div>${paso < 6 ? `<button class="btn-siguiente" id="btnSiguiente" ${!completado ? 'disabled' : ''}>Siguiente ➡</button>` : ''}</div>
+        </div>`;
+        contenidoPaso.innerHTML = html;
+
+        // Evento para los radios: verificar si todos están seleccionados
+        const radios = contenidoPaso.querySelectorAll('input[type="radio"]');
+        const grupos = {};
+        radios.forEach(r => {
+            const name = r.name;
+            if (!grupos[name]) grupos[name] = [];
+            grupos[name].push(r);
+        });
+        Object.keys(grupos).forEach(name => {
+            grupos[name].forEach(r => {
+                r.addEventListener('change', function() {
+                    const todosSeleccionados = verificarPasoCompletado(paso);
+                    if (todosSeleccionados && !pasosCompletados[paso-1]) {
+                        pasosCompletados[paso-1] = true;
+                        actualizarBotonesPasos();
+                        renderPaso(paso);
+                    }
+                });
+            });
+        });
+
+        const btnSiguiente = document.getElementById('btnSiguiente');
+        if (btnSiguiente) {
+            btnSiguiente.addEventListener('click', function() {
+                if (pasosCompletados[paso-1]) {
+                    if (paso < 6) avanzarPaso(paso + 1);
+                } else {
+                    alert('Completa todos los ítems de este paso antes de continuar.');
+                }
+            });
+        }
+        const btnAnterior = document.getElementById('btnAnterior');
+        if (btnAnterior) {
+            btnAnterior.addEventListener('click', function() {
+                if (paso > 1) {
+                    pasoActual = paso - 1;
+                    renderPaso(pasoActual);
+                    actualizarBotonesPasos();
+                    actualizarIndicadorPaso(pasoActual);
+                }
+            });
+        }
+        actualizarIndicadorPaso(paso);
+    }
+
+    function verificarPasoCompletado(paso) {
+        if (paso === 6) {
+            const radios = contenidoPaso.querySelectorAll('.seg-card input[type="radio"]');
+            const grupos = {};
+            radios.forEach(r => {
+                const name = r.name;
+                if (!grupos[name]) grupos[name] = false;
+                if (r.checked) grupos[name] = true;
+            });
+            return Object.values(grupos).every(v => v === true);
+        }
+        const lateral = PASO_LATERAL[paso];
+        const items = getItemsForCategoria(categoriaSeleccionada, lateral);
+        const grupos = {};
+        items.forEach(item => {
+            const name = `chk_${categoriaSeleccionada}_${lateral}_${item.id}`;
+            const radios = document.querySelectorAll(`input[name="${name}"]`);
+            let seleccionado = false;
+            radios.forEach(r => { if (r.checked) seleccionado = true; });
+            grupos[name] = seleccionado;
+        });
+        return Object.values(grupos).every(v => v === true);
+    }
+
+    function renderSeguridadConNavegacion() {
+        const uso = document.querySelector('input[name="usoVehiculo"]:checked')?.value || 'pasajeros';
+        let html = `<div class="seguridad-paso">`;
+        // Extintor
+        html += `<div class="seg-card" style="margin-bottom:20px;">
+            <h3>🧯 Extintor (PQS) – NTP 833.032</h3>
+            <div class="extintor-info" id="extintorInfoContainer">
+                <table><tr><td>M1:</td><td>2 kg (1A:10B:C)</td><td>M2:</td><td>4 kg (2A:10B:C)</td></tr>
+                <tr><td>M3:</td><td>6 kg (6A:20B:C)</td><td>N1:</td><td>6 kg (6A:20B:C)</td></tr>
+                <tr><td>N2:</td><td>9 kg (9A:30B:C)</td><td>N3:</td><td>9 kg (9A:30B:C)</td></tr>
+                <tr><td>L:</td><td>1 kg (1A:5B:C)</td><td>O:</td><td>según PBV (6 o 9 kg)</td></tr>
+                <tr><td>S:</td><td>según uso (6 o 9 kg)</td><td></td><td></td></tr></table>
+                <div style="margin-top:4px;font-size:12px;color:#a0b8d0;"><span id="extintorInfo">Categoría actual: ${categoriaSeleccionada || '—'}</span></div>
+            </div>
+            <table>
+                <thead><tr><th>N°</th><th>Descripción</th><th>Cant.</th><th>Medidas</th><th>Cumple</th><th>No Cumple</th><th>No cuenta</th><th>No aplica</th><th>Observación</th></tr></thead>
+                <tbody>
+                    ${EXTINTOR_DATA.map((item, i) => `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${item.desc}</td>
+                            <td>${item.cant}</td>
+                            <td>${item.medida}</td>
+                            <td class="chk-cell"><input type="radio" name="ext${i+1}" value="C"></td>
+                            <td class="chk-cell"><input type="radio" name="ext${i+1}" value="NC"></td>
+                            <td class="chk-cell"><input type="radio" name="ext${i+1}" value="NT"></td>
+                            <td class="chk-cell"><input type="radio" name="ext${i+1}" value="NA"></td>
+                            <td class="obs-cell"><input type="text" placeholder="Obs"></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>`;
+        // Botiquín
+        const datosBot = BOTIQUIN_DATA[uso] || BOTIQUIN_DATA.pasajeros;
+        html += `<div class="seg-card" style="margin-bottom:20px;">
+            <h3>🩹 Botiquín – R.D. Nº 1011-2010-MTC/15</h3>
+            <div style="font-size:12.5px;color:#a0b8d0;margin-bottom:6px;">Cantidades según uso: ${uso === 'pasajeros' ? 'Pasajeros' : 'Mercancías'}</div>
+            <table>
+                <thead><tr><th>N°</th><th>Descripción</th><th>Cant.</th><th>Medidas</th><th>Cumple</th><th>No Cumple</th><th>No cuenta</th><th>No aplica</th><th>Observación</th></tr></thead>
+                <tbody>
+                    ${datosBot.map((item, i) => `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${item.desc}</td>
+                            <td>${item.cant}</td>
+                            <td>${item.medida}</td>
+                            <td class="chk-cell"><input type="radio" name="bot_${i}" value="C"></td>
+                            <td class="chk-cell"><input type="radio" name="bot_${i}" value="NC"></td>
+                            <td class="chk-cell"><input type="radio" name="bot_${i}" value="NT"></td>
+                            <td class="chk-cell"><input type="radio" name="bot_${i}" value="NA"></td>
+                            <td class="obs-cell"><input type="text" placeholder="Obs"></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>`;
+        // Otros elementos
+        html += `<div class="seg-card">
+            <h3>⚠️ Otros elementos de seguridad</h3>
+            <table>
+                <thead><tr><th>N°</th><th>Descripción</th><th>Cant.</th><th>Medidas</th><th>Cumple</th><th>No Cumple</th><th>No cuenta</th><th>No aplica</th><th>Observación</th></tr></thead>
+                <tbody>
+                    ${OTROS_DATA.map((item, i) => `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${item.desc}</td>
+                            <td>${item.cant}</td>
+                            <td>${item.medida}</td>
+                            <td class="chk-cell"><input type="radio" name="seg${i+1}" value="C"></td>
+                            <td class="chk-cell"><input type="radio" name="seg${i+1}" value="NC"></td>
+                            <td class="chk-cell"><input type="radio" name="seg${i+1}" value="NT"></td>
+                            <td class="chk-cell"><input type="radio" name="seg${i+1}" value="NA"></td>
+                            <td class="obs-cell"><input type="text" placeholder="Obs"></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>`;
+        html += `</div>`;
+
+        const completado = pasosCompletados[5];
+        html += `<div class="nav-botones">
+            <div><button class="btn-anterior" id="btnAnteriorSeg">⬅ Anterior</button></div>
+            <div>
+                ${completado 
+                    ? `<span class="mensaje-terminado">✅ Revisión terminada</span>` 
+                    : `<span style="color:#a0b8d0; font-size:13px;">Selecciona todos los ítems para finalizar</span>`}
+            </div>
+        </div>`;
+
+        contenidoPaso.innerHTML = html;
+        actualizarIndicadorPaso(6);
+        actualizarExtintorInfo();
+
+        // Eventos para los radios de seguridad
+        const radiosSeg = contenidoPaso.querySelectorAll('.seg-card input[type="radio"]');
+        const gruposSeg = {};
+        radiosSeg.forEach(r => {
+            const name = r.name;
+            if (!gruposSeg[name]) gruposSeg[name] = [];
+            gruposSeg[name].push(r);
+        });
+        Object.keys(gruposSeg).forEach(name => {
+            gruposSeg[name].forEach(r => {
+                r.addEventListener('change', function() {
+                    const todos = verificarPasoCompletado(6);
+                    if (todos && !pasosCompletados[5]) {
+                        pasosCompletados[5] = true;
+                        actualizarBotonesPasos();
+                        renderSeguridadConNavegacion();
+                    }
+                });
+            });
+        });
+
+        const btnAnteriorSeg = document.getElementById('btnAnteriorSeg');
+        if (btnAnteriorSeg) {
+            btnAnteriorSeg.addEventListener('click', function() {
+                if (pasoActual > 1) {
+                    pasoActual = pasoActual - 1;
+                    renderPaso(pasoActual);
+                    actualizarBotonesPasos();
+                    actualizarIndicadorPaso(pasoActual);
+                }
+            });
+        }
+    }
+
+    function actualizarIndicadorPaso(paso) {
+        pasoActualLabel.textContent = paso;
+        pasoBtns.forEach(btn => {
+            const p = parseInt(btn.dataset.paso);
+            btn.classList.remove('active', 'completado', 'disabled');
+            if (p === paso) btn.classList.add('active');
+            else if (pasosCompletados[p-1]) btn.classList.add('completado');
+            else if (p > paso) btn.classList.add('disabled');
+        });
+        pasoBtns.forEach(btn => {
+            const p = parseInt(btn.dataset.paso);
+            if (pasosCompletados[p-1] || p === paso) {
+                btn.style.cursor = 'pointer';
+                btn.style.opacity = '1';
+            } else if (p > paso) {
+                btn.style.cursor = 'not-allowed';
+                btn.style.opacity = '0.5';
+            }
+        });
+    }
+
+    function avanzarPaso(paso) {
+        if (paso < 1 || paso > 6) return;
+        if (!categoriaSeleccionada) return;
+        if (paso > 1 && !pasosCompletados[paso-2]) {
+            alert('Completa el paso anterior antes de avanzar.');
+            return;
+        }
+        pasoActual = paso;
+        renderPaso(paso);
+        actualizarBotonesPasos();
+        actualizarIndicadorPaso(paso);
+    }
+
+    function actualizarBotonesPasos() {
+        actualizarIndicadorPaso(pasoActual);
+    }
+
+    function actualizarExtintorInfo() {
+        if (!categoriaSeleccionada) return;
+        const info = getExtintorInfo(categoriaSeleccionada);
+        let detalle = '';
+        const cat = categoriaSeleccionada;
+        if (cat === 'M') detalle = 'M1: 2kg, M2: 4kg, M3: 6kg';
+        else if (cat === 'N') detalle = 'N1: 6kg, N2: 9kg, N3: 9kg';
+        else if (cat === 'O') detalle = 'según PBV (6 o 9 kg)';
+        else if (cat === 'S') detalle = 'según uso (6 o 9 kg)';
+        else if (cat === 'NO') detalle = 'N+O combinado (ver tabla)';
+        else detalle = `${info.kg} kg (${info.clase})`;
+        const el = document.getElementById('extintorInfo');
+        if (el) el.textContent = `Categoría actual: ${cat} → ${detalle}, ${info.cantidad} extintor(es)`;
+    }
+
+    // ============================================================
+    // MANEJADORES DE EVENTOS
+    // ============================================================
+    catGrid.addEventListener('click', function(e) {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const cat = btn.dataset.cat;
+        catGrid.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        categoriaSeleccionada = cat;
+        pasosCompletados = [false, false, false, false, false, false];
+        pasoActual = 1;
+        renderPaso(1);
+        actualizarBotonesPasos();
+        actualizarIndicadorPaso(1);
+    });
+
+    pasoBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const p = parseInt(this.dataset.paso);
+            if (!categoriaSeleccionada) {
+                alert('Primero selecciona una categoría.');
+                return;
+            }
+            if (p === pasoActual) return;
+            if (p === 1) {
+                pasoActual = 1;
+                renderPaso(1);
+                actualizarBotonesPasos();
+                actualizarIndicadorPaso(1);
+                return;
+            }
+            if (pasosCompletados[p-1] || p === pasoActual) {
+                pasoActual = p;
+                renderPaso(p);
+                actualizarBotonesPasos();
+                actualizarIndicadorPaso(p);
+            } else {
+                alert('Completa los pasos anteriores antes de saltar a este.');
+            }
+        });
+    });
+
+    document.querySelectorAll('input[name="usoVehiculo"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (pasoActual === 6) renderSeguridadConNavegacion();
+        });
+    });
+
+    // ============================================================
+    // FUNCIONES DE ACCIÓN
+    // ============================================================
+    function resetChecklist() {
+        if (!confirm('¿Reiniciar todos los campos del checklist?')) return;
+        document.querySelectorAll('#contenidoPaso input[type="radio"]').forEach(r => {
+            r.checked = false;
+        });
+        document.querySelectorAll('#contenidoPaso input[type="text"]').forEach(inp => inp.value = '');
+        pasosCompletados = [false, false, false, false, false, false];
+        if (categoriaSeleccionada) {
+            pasoActual = 1;
+            renderPaso(1);
+            actualizarBotonesPasos();
+            actualizarIndicadorPaso(1);
+        }
+        alert('Checklist reiniciado.');
+    }
+
+    function generarReporte() {
+        if (!categoriaSeleccionada) {
+            alert('Primero selecciona una categoría.');
+            return;
+        }
+        const empresa = document.getElementById('empresa').value || 'Checklist - Autoescuela 2026';
+        const ruc = document.getElementById('ruc').value || '—';
+        const tipo = document.querySelector('input[name="tipoUnidad"]:checked')?.value || 'unitario';
+        const uso = document.querySelector('input[name="usoVehiculo"]:checked')?.value || 'pasajeros';
+        const placa1 = document.getElementById('placa1').value || '_______';
+        const placa2 = document.getElementById('placa2').value || '';
+        const placa3 = document.getElementById('placa3').value || '';
+        const inspector = document.getElementById('inspector').value || 'No especificado';
+        const fecha = document.getElementById('fechaInspeccion').value || new Date().toISOString().split('T')[0];
+        const placas = [placa1, placa2, placa3].filter(p => p.trim() !== '').join(' - ') || 'No registrada';
+
+        let total = 0, cumple = 0, noCumple = 0, noCuenta = 0, noAplica = 0;
+        for (let p = 1; p <= 5; p++) {
+            const lateral = PASO_LATERAL[p];
+            const items = getItemsForCategoria(categoriaSeleccionada, lateral);
+            items.forEach(item => {
+                const name = `chk_${categoriaSeleccionada}_${lateral}_${item.id}`;
+                const radios = document.querySelectorAll(`input[name="${name}"]`);
+                let checked = false;
+                radios.forEach(r => {
+                    if (r.checked) {
+                        checked = true;
+                        total++;
+                        if (r.value === 'C') cumple++;
+                        else if (r.value === 'NC') noCumple++;
+                        else if (r.value === 'NT') noCuenta++;
+                        else if (r.value === 'NA') noAplica++;
+                    }
+                });
+            });
+        }
+        let segTotal = 0, segCumple = 0, segNoCumple = 0, segNoCuenta = 0, segNoAplica = 0;
+        document.querySelectorAll('#contenidoPaso .seg-card input[type="radio"]:checked').forEach(r => {
+            segTotal++;
+            if (r.value === 'C') segCumple++;
+            else if (r.value === 'NC') segNoCumple++;
+            else if (r.value === 'NT') segNoCuenta++;
+            else if (r.value === 'NA') segNoAplica++;
+        });
+
+        const observaciones = [];
+        document.querySelectorAll('#contenidoPaso input[type="text"]').forEach(inp => {
+            if (inp.value.trim()) observaciones.push(`- ${inp.value.trim()}`);
+        });
+
+        const reporte = `
+=================================================
+REPORTE DE INSPECCIÓN TÉCNICA VEHICULAR
+${empresa} - RUC: ${ruc}
+=================================================
+Fecha: ${fecha}
+Inspector: ${inspector}
+Categoría: ${categoriaSeleccionada === 'NO' ? 'N + O (Combinado)' : categoriaSeleccionada}
+Tipo de unidad: ${tipo === 'unitario' ? 'Unitario' : 'Combinado'}
+Uso: ${uso === 'pasajeros' ? 'Pasajeros' : 'Mercancías'}
+Placa(s): ${placas}
+
+-------- RESULTADOS DEL CHECKLIST --------
+Ítems revisados (excluye seguridad): ${total}
+Cumple: ${cumple}
+No cumple: ${noCumple}
+No cuenta: ${noCuenta}
+No aplica: ${noAplica}
+Tasa de cumplimiento: ${total > 0 ? Math.round((cumple / total) * 100) : 0}%
+
+-------- EQUIPAMIENTO DE SEGURIDAD --------
+Ítems de seguridad revisados: ${segTotal}
+Cumple: ${segCumple}
+No cumple: ${segNoCumple}
+No cuenta: ${segNoCuenta}
+No aplica: ${segNoAplica}
+
+-------- OBSERVACIONES DESTACADAS --------
+${observaciones.length ? observaciones.join('\n') : 'Ninguna observación registrada.'}
+
+=================================================
+Firma del inspector: _________________________
+=================================================`;
+        const blob = new Blob([reporte], { type: 'text/plain;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `Reporte_Inspeccion_${fecha}_${placas.replace(/\s/g,'_')}.txt`;
+        link.click();
+        URL.revokeObjectURL(link.href);
+        alert('Reporte generado y descargado.');
+    }
+
+    function imprimirPDF() { window.print(); }
+    function compartirPDF() { window.print(); }
+
+    // ============================================================
+    // INICIALIZACIÓN
+    // ============================================================
+    document.getElementById('fechaInspeccion').valueAsDate = new Date();
+    const btnL = catGrid.querySelector('[data-cat="L"]');
+    if (btnL) {
+        btnL.classList.add('active');
+        categoriaSeleccionada = 'L';
+        pasoActual = 1;
+        renderPaso(1);
+        actualizarBotonesPasos();
+        actualizarIndicadorPaso(1);
+    }
+
+    document.getElementById('btnReiniciar').addEventListener('click', resetChecklist);
+    document.getElementById('btnReporte').addEventListener('click', generarReporte);
+    document.getElementById('btnImprimir').addEventListener('click', imprimirPDF);
+    document.getElementById('btnCompartir').addEventListener('click', compartirPDF);
+</script>
+</body>
+</html>
